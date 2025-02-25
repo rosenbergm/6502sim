@@ -51,10 +51,11 @@ Hereafter, "6502" refers to the W65C02S unless stated otherwise.
 
 When the emulator is run with the `-d` (`--debug`) flag, debugging mode is enabled.
 With the imported [`debuc.inc`](examples/includes/debug.inc) file in an assembly
-file, the `DBGBREAK` macro can be used to enter the debugger.
+file, the `DBGBREAK` macro can be used to enter the debugger from assembly.
 
 In the debugger, these commands can be used:
 
+- `h/help` prints this help message.
 - `d/dump` prints the contents of the registers.
 - `s/step` advances the program counter and executes the following instruction.
 - `c/continue` breaks out of the debugger.

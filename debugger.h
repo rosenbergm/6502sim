@@ -22,12 +22,12 @@
 constexpr const char *PROMPT = "> ";
 constexpr const char *HELP_MSG =
     "Available commands:\n"
-    "  dump - dump registers\n"
-    "  get <address> - get value at address\n"
-    "  get <start> <count> - get <count> values starting at <start>\n"
-    "  step - step one instruction\n"
-    "  continue - continue execution\n"
-    "  help - show this help";
+    "  d/dump - dump registers\n"
+    "  g/get <address> - get value at address\n"
+    "  g/get <start> <count> - get <count> values starting at <start>\n"
+    "  s/step - step one instruction\n"
+    "  c/continue - continue execution\n"
+    "  h/help - show this help message";
 constexpr const char *INVALID_COMMAND_MSG =
     "Unknown command (type help for more info).";
 
