@@ -14,8 +14,7 @@ constexpr size_t MAX_MEMORY = 0x10000;
 constexpr unsigned short RESET_VECTOR_LOW = 0xFFFC;
 constexpr unsigned short RESET_VECTOR_HIGH = 0xFFFD;
 
-constexpr size_t STACK_START = 0x100;
-constexpr size_t STACK_SIZE = 0x100;
+constexpr size_t STACK_START = 0x1FF;
 
 constexpr const char *STP_MSG = "== ENCOUNTERED STP, terminating... ==";
 
@@ -46,7 +45,7 @@ private:
 
 public:
   CPU6502(GP_Memory *memory, bool debug = false)
-      : A(), X(), Y(), S(std::byte(STACK_SIZE)), P(), PC(), memory_(memory),
+      : A(), X(), Y(), S(std::byte(STACK_START)), P(), PC(), memory_(memory),
         debug_(debug) {
     if (memory_ == nullptr) {
       throw CPUException("Memory cannot be null.");

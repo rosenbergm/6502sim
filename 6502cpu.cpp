@@ -15,10 +15,9 @@ void CPU6502::update_flags(std::byte value) {
  * There are not guarantees the stack pointer will not overflow.
  */
 std::byte CPU6502::pop_stack() {
-  std::byte value =
-      memory_->read(address(STACK_START + static_cast<size_t>(S)));
+  std::byte value = memory_->read(address(S));
 
-  S = std::byte(static_cast<size_t>(S) + 1);
+  S = (S + 1).value;
 
   return value;
 }
@@ -29,9 +28,9 @@ std::byte CPU6502::pop_stack() {
  * There are not guarantees the stack pointer will not underflow.
  */
 void CPU6502::push_stack(std::byte value) {
-  S = std::byte(static_cast<size_t>(S) - 1);
+  S = (S - 1).value;
 
-  memory_->write(address(STACK_START + static_cast<size_t>(S)), value);
+  memory_->write(address(S), value);
 }
 
 /** Executes the provided code in memory. */
