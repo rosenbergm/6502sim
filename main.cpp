@@ -19,7 +19,13 @@ int main(int argc, char **argv) {
   }
 
   // load the binary file into memory
-  memory.import(argv[1]);
+  try {
+    memory.import(argv[1]);
+  } catch (std::runtime_error &e) {
+    std::cerr << e.what() << std::endl;
+
+    return 1;
+  }
 
   CPU6502 cpu(&memory);
 
@@ -58,7 +64,13 @@ int main(int argc, char **argv) {
 
   Debugger debugger(&cpu);
 
-  debugger.run();
+  try {
+    debugger.run();
+  } catch (CPUException &e) {
+    std::cerr << e.message() << std::endl;
+
+    return 1;
+  }
 
   return 0;
 }

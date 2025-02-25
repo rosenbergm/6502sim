@@ -1,6 +1,7 @@
 #include "gp_memory.h"
 #include "address.h"
 
+#include <format>
 #include <fstream>
 
 size_t GP_Memory::size() const { return size_; }
@@ -32,7 +33,9 @@ void GP_Memory::import(const std::string &filename) {
   std::ifstream file(filename, std::ios::binary);
 
   if (!file.good()) {
-    throw std::runtime_error("Could not open file.");
+    throw std::runtime_error(std::format(
+        "Could not open file {}. Make sure the assembled binary is there.",
+        filename));
   }
 
   import(file);

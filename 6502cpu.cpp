@@ -205,7 +205,9 @@ InstructionErr CPU6502::step() {
   }
 
   default:
-    throw std::runtime_error("Addressing mode not implemented.");
+    // This should theoretically never happen. The assembler should produce the
+    // correct machine code.
+    throw CPUException("Addressing mode not implemented.");
   }
 
   InstructionErr ret_code = instruction->second.execute(*this, op_address);

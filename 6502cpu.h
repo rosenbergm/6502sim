@@ -19,12 +19,12 @@ constexpr size_t STACK_SIZE = 0x100;
 
 constexpr const char *STP_MSG = "== ENCOUNTERED STP, terminating... ==";
 
-class CPUInitializationException {
+class CPUException {
 private:
   const char *message_;
 
 public:
-  CPUInitializationException(const char *message) : message_(message) {}
+  CPUException(const char *message) : message_(message) {}
 
   const char *message() const { return message_; }
 };
@@ -49,7 +49,7 @@ public:
       : A(), X(), Y(), S(std::byte(STACK_SIZE)), P(), PC(), memory_(memory),
         debug_(debug) {
     if (memory_ == nullptr) {
-      throw CPUInitializationException("Memory cannot be null.");
+      throw CPUException("Memory cannot be null.");
     }
 
     // a warning is perfectly fine here. the simulator is just
