@@ -16,6 +16,8 @@ constexpr unsigned short RESET_VECTOR_HIGH = 0xFFFD;
 
 constexpr size_t STACK_START = 0x1FF;
 
+constexpr std::byte NEGATIVE_FLAG_MASK = std::byte(0x80);
+
 constexpr const char *STP_MSG = "== ENCOUNTERED STP, terminating... ==";
 
 class CPUException {
@@ -64,8 +66,8 @@ public:
     std::byte low = memory_->read(RESET_VECTOR_LOW);
     std::byte high = memory_->read(RESET_VECTOR_HIGH);
 
-    if ((low == std::byte(0xFF) && high == std::byte(0xFF)) ||
-        (low == std::byte(0x00) && high == std::byte(0x00))) {
+    if ((low == FULL_BYTE && high == FULL_BYTE) ||
+        (low == ZERO_BYTE && high == ZERO_BYTE)) {
       std::cout << "Warning: Reset vector appears not to be set." << std::endl;
     }
 

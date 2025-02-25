@@ -12,6 +12,9 @@
 // return os << std::bitset<8>(std::to_integer<unsigned int>(b));
 // }
 
+constexpr std::byte ZERO_BYTE = std::byte(0x00);
+constexpr std::byte FULL_BYTE = std::byte(0xFF);
+
 static size_t hex_to_number(const std::string &hex) {
   size_t result = 0;
 

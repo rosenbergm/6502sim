@@ -1,12 +1,13 @@
 #include "6502cpu.h"
 #include "address.h"
+#include "byte_utils.h"
 #include "instruction_types.h"
 #include "psr.h"
 
 /** Sets the ZERO (Z) and NEGATIVE (N) flags according to the value passed */
 void CPU6502::update_flags(std::byte value) {
-  P.set_bit(psr_bit::zero, value == std::byte(0));
-  P.set_bit(psr_bit::negative, (value & std::byte(0x80)) != std::byte(0));
+  P.set_bit(psr_bit::zero, value == ZERO_BYTE);
+  P.set_bit(psr_bit::negative, (value & NEGATIVE_FLAG_MASK) != ZERO_BYTE);
 }
 
 /**
@@ -156,7 +157,7 @@ InstructionErr CPU6502::step() {
   }
 
   case AddressingMode::Stack: {
-    op_address = address(0x100 + static_cast<size_t>(S));
+    op_address = address(static_cast<size_t>(S));
 
     break;
   }
