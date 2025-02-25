@@ -9,6 +9,11 @@ void CPU6502::update_flags(std::byte value) {
   P.set_bit(psr_bit::negative, (value & std::byte(0x80)) != std::byte(0));
 }
 
+/**
+ * Pop a value from the CPU stack and increment the stack pointer.
+ *
+ * There are not guarantees the stack pointer will not overflow.
+ */
 std::byte CPU6502::pop_stack() {
   std::byte value =
       memory_->read(address(STACK_START + static_cast<size_t>(S)));
@@ -18,12 +23,18 @@ std::byte CPU6502::pop_stack() {
   return value;
 }
 
+/**
+ * Pushes a value to the CPU stack and decrements the stack pointer.
+ *
+ * There are not guarantees the stack pointer will not underflow.
+ */
 void CPU6502::push_stack(std::byte value) {
   S = std::byte(static_cast<size_t>(S) - 1);
 
   memory_->write(address(STACK_START + static_cast<size_t>(S)), value);
 }
 
+/** Executes the provided code in memory. */
 void CPU6502::execute() {
   while (PC.inner() < memory_->size()) {
     InstructionErr err = step();
@@ -36,6 +47,8 @@ void CPU6502::execute() {
   }
 }
 
+/** Makes one step of the CPU, equivallent to executing one instruction and
+ * advances the program counter. */
 InstructionErr CPU6502::step() {
   std::byte opcode = memory_->read(PC);
 
