@@ -42,7 +42,19 @@ public:
   constexpr std::byte high() const noexcept {
     return std::byte((value_ >> 8) & 0xFF);
   }
+
+  static constexpr bool is_carry(const uint32_t a) noexcept {
+    return a > 0xFFFF;
+  }
 };
+
+constexpr bool operator==(const address &a, const address &b) noexcept {
+  return a.inner() == b.inner();
+}
+
+constexpr bool operator==(const address &a, const size_t &b) noexcept {
+  return a.inner() == b;
+}
 
 struct address_result {
   address value;
@@ -53,44 +65,37 @@ struct address_result {
       : value(value_), carry(carry_) {}
 };
 
+// address + address
 constexpr address_result operator+(const address &a,
                                    const address &b) noexcept {
-  size_t result = a.inner() + b.inner();
+  uint32_t result = a.inner() + b.inner();
 
-  return {address(result), result > 0xFFFF};
+  return {address(result), address::is_carry(result)};
 }
 
+// address + byte
 constexpr address_result operator+(const address &a,
                                    const std::byte &b) noexcept {
-  size_t result = a.inner() + static_cast<size_t>(b);
+  uint32_t result = a.inner() + static_cast<uint16_t>(b);
 
-  return {address(result), result > 0xFFFF};
+  return {address(result), address::is_carry(result)};
 }
 
-constexpr bool operator==(const address &a, const address &b) noexcept {
-  return a.inner() == b.inner();
-}
-
-constexpr bool operator==(const address &a, const size_t &b) noexcept {
-  return a.inner() == b;
-}
-
-template <typename IntegerType>
-  requires std::integral<IntegerType>
+// address + int
 constexpr address_result operator+(const address &a,
-                                   const IntegerType &b) noexcept {
-  size_t result = a.inner() + static_cast<size_t>(b);
+                                   const uint16_t &b) noexcept {
+  uint32_t result = a.inner() + b;
 
-  return {address(result), result > 0xFFFF};
+  return {address(result), address::is_carry(result)};
 }
 
-template <typename IntegerType>
-  requires std::integral<IntegerType>
+// address - int
 constexpr address_result operator-(const address &a,
-                                   const IntegerType &b) noexcept {
-  size_t result = a.inner() - static_cast<size_t>(b);
+                                   const uint16_t &b) noexcept {
+  bool borrow = a.inner() < b;
+  uint32_t result = a.inner() - b;
 
-  return {address(result), result > 0xFFFF};
+  return {address(result), borrow};
 }
 
 #endif
