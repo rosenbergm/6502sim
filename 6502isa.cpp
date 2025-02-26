@@ -7,10 +7,6 @@
 #include <cstddef>
 #include <cstdint>
 
-bool is_bit_set(std::byte byte, int bit) {
-  return (static_cast<unsigned char>(byte) & (1 << bit)) == 1;
-}
-
 CPU6502ISA isa = {
     {0x00, Instruction("BRK", AddressingMode::Stack,
                        [](CPU6502 &cpu, address _address) -> InstructionErr {
@@ -553,7 +549,7 @@ CPU6502ISA isa = {
                          cpu.get_PSR()->set_bit(psr_bit::zero,
                                                 is_zero(mem_byte));
                          cpu.get_PSR()->set_bit(psr_bit::overflow,
-                                                is_overflow(mem_byte));
+                                                is_bit_set(mem_byte, 6));
                          cpu.get_PSR()->set_bit(psr_bit::negative,
                                                 is_negative(mem_byte));
 
@@ -566,7 +562,7 @@ CPU6502ISA isa = {
                          cpu.get_PSR()->set_bit(psr_bit::zero,
                                                 is_zero(mem_byte));
                          cpu.get_PSR()->set_bit(psr_bit::overflow,
-                                                is_overflow(mem_byte));
+                                                is_bit_set(mem_byte, 6));
                          cpu.get_PSR()->set_bit(psr_bit::negative,
                                                 is_negative(mem_byte));
 

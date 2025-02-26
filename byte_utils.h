@@ -99,14 +99,14 @@ constexpr byte_result operator-(std::byte a, const byte_result &b) {
   return {std::byte(result & 0xFF), result > 0xFF || b.carry, result > 0x7F};
 }
 
-static bool is_negative(std::byte b) {
+constexpr bool is_negative(std::byte b) {
   return (std::to_integer<int>(b) & 0x80);
 }
 
-static bool is_overflow(std::byte b) {
-  return (std::to_integer<int>(b) & 0x40);
-}
+constexpr bool is_zero(std::byte b) { return std::to_integer<int>(b) == 0; }
 
-static bool is_zero(std::byte b) { return std::to_integer<int>(b) == 0; }
+constexpr bool is_bit_set(std::byte b, int bit) {
+  return (b & std::byte(1 << bit)) != ZERO_BYTE;
+}
 
 #endif
