@@ -5,27 +5,10 @@
 #include <iostream>
 #include <sstream>
 
-// inline std::ostream &operator<<(std::ostream &os, std::byte b) {
-//   return os << "0x" << std::hex << std::uppercase
-//             << static_cast<unsigned int>(b) << std::dec;
-
-// return os << std::bitset<8>(std::to_integer<unsigned int>(b));
-// }
-
 constexpr std::byte ZERO_BYTE = std::byte(0x00);
 constexpr std::byte FULL_BYTE = std::byte(0xFF);
 
 static size_t hex_to_number(const std::string &hex) {
-  size_t result = 0;
-
-  std::stringstream ss;
-  ss << std::hex << hex;
-  ss >> result;
-
-  return result;
-}
-
-static size_t hex_to_number(std::string &&hex) {
   size_t result = 0;
 
   std::stringstream ss;
