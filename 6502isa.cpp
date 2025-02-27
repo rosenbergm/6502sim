@@ -7,6 +7,95 @@
 #include <cstddef>
 #include <cstdint>
 
+namespace {
+inline InstructionErr ADC(CPU6502 &cpu, address address) {
+  std::byte operand = cpu.get_memory()->read(address);
+  std::byte accumulator = cpu.get_A();
+
+  auto result = accumulator + operand + cpu.get_PSR()->get_bit(psr_bit::carry);
+
+  cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
+
+  bool operand_negative = is_negative(operand);
+  bool accum_negative = is_negative(accumulator);
+  bool result_negative = is_negative(result.value);
+
+  bool overflow = (!operand_negative && !accum_negative && result_negative) ||
+                  (operand_negative && accum_negative && !result_negative);
+
+  cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
+
+  cpu.set_A(result.value);
+
+  cpu.update_flags(cpu.get_A());
+
+  return InstructionErr::OK;
+}
+
+inline InstructionErr SBC(CPU6502 &cpu, address address) {
+  std::byte value = cpu.get_memory()->read(address);
+  bool borrow = !cpu.get_PSR()->get_bit(psr_bit::carry);
+
+  uint8_t a = static_cast<uint8_t>(cpu.get_A());
+  uint8_t m = static_cast<uint8_t>(value);
+
+  uint16_t result = a - m - borrow;
+
+  cpu.get_PSR()->set_bit(psr_bit::carry, a >= (m + borrow));
+  std::byte result_byte = std::byte(result);
+
+  bool overflow = ((cpu.get_A() ^ result_byte) & (cpu.get_A() ^ value) &
+                   std::byte(0x80)) != std::byte(0);
+
+  cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
+
+  cpu.set_A(result_byte);
+  cpu.update_flags(cpu.get_A());
+
+  return InstructionErr::OK;
+}
+
+inline InstructionErr BBRx(CPU6502 &cpu, address address, int bit) {
+  std::byte value = cpu.get_memory()->read(address);
+
+  if (!is_bit_set(value, bit)) {
+    cpu.set_PC(address);
+
+    return InstructionErr::OKPCModified;
+  }
+
+  return InstructionErr::OK;
+}
+
+inline InstructionErr BBSx(CPU6502 &cpu, address address, int bit) {
+  std::byte value = cpu.get_memory()->read(address);
+
+  if (is_bit_set(value, 0)) {
+    cpu.set_PC(address);
+
+    return InstructionErr::OKPCModified;
+  }
+
+  return InstructionErr::OK;
+}
+
+inline InstructionErr RMBx(CPU6502 &cpu, address address, int bit) {
+  std::byte value = cpu.get_memory()->read(address);
+
+  cpu.get_memory()->write(address, value & ~std::byte(1 << bit));
+
+  return InstructionErr::OK;
+}
+
+inline InstructionErr SMBx(CPU6502 &cpu, address address, int bit) {
+  std::byte value = cpu.get_memory()->read(address);
+
+  cpu.get_memory()->write(address, value | std::byte(1 << bit));
+
+  return InstructionErr::OK;
+}
+} // namespace
+
 CPU6502ISA isa = {
     {0x00, Instruction("BRK", AddressingMode::Stack,
                        [](CPU6502 &cpu, address _address) -> InstructionErr {
@@ -233,57 +322,11 @@ CPU6502ISA isa = {
                        })},
     {0x61, Instruction("ADC", AddressingMode::ZeroPageIndexedIndirect,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte operand = cpu.get_memory()->read(address);
-                         std::byte accumulator = cpu.get_A();
-
-                         auto result = accumulator + operand +
-                                       cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-
-                         bool operand_negative = is_negative(operand);
-                         bool accum_negative = is_negative(accumulator);
-                         bool result_negative = is_negative(result.value);
-
-                         bool overflow = (!operand_negative &&
-                                          !accum_negative && result_negative) ||
-                                         (operand_negative && accum_negative &&
-                                          !result_negative);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result.value);
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return ADC(cpu, address);
                        })},
     {0x71, Instruction("ADC", AddressingMode::ZeroPageIndirectIndexedY,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte operand = cpu.get_memory()->read(address);
-                         std::byte accumulator = cpu.get_A();
-
-                         auto result = accumulator + operand +
-                                       cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-
-                         bool operand_negative = is_negative(operand);
-                         bool accum_negative = is_negative(accumulator);
-                         bool result_negative = is_negative(result.value);
-
-                         bool overflow = (!operand_negative &&
-                                          !accum_negative && result_negative) ||
-                                         (operand_negative && accum_negative &&
-                                          !result_negative);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result.value);
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return ADC(cpu, address);
                        })},
     {0x81, Instruction("STA", AddressingMode::ZeroPageIndexedIndirect,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -364,53 +407,11 @@ CPU6502ISA isa = {
                  })},
     {0xE1, Instruction("SBC", AddressingMode::ZeroPageIndexedIndirect,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-                         bool borrow = !cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         uint8_t a = static_cast<uint8_t>(cpu.get_A());
-                         uint8_t m = static_cast<uint8_t>(value);
-
-                         uint16_t result = a - m - borrow;
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry,
-                                                a >= (m + borrow));
-                         std::byte result_byte = std::byte(result);
-
-                         bool overflow = ((cpu.get_A() ^ result_byte) &
-                                          (cpu.get_A() ^ value) &
-                                          std::byte(0x80)) != std::byte(0);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result_byte);
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return SBC(cpu, address);
                        })},
     {0xF1, Instruction("SBC", AddressingMode::ZeroPageIndirectIndexedY,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-                         bool borrow = !cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         uint8_t a = static_cast<uint8_t>(cpu.get_A());
-                         uint8_t m = static_cast<uint8_t>(value);
-
-                         uint16_t result = a - m - borrow;
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry,
-                                                a >= (m + borrow));
-                         std::byte result_byte = std::byte(result);
-
-                         bool overflow = ((cpu.get_A() ^ result_byte) &
-                                          (cpu.get_A() ^ value) &
-                                          std::byte(0x80)) != std::byte(0);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result_byte);
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return SBC(cpu, address);
                        })},
     {0x12, Instruction("ORA", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -441,30 +442,7 @@ CPU6502ISA isa = {
                        })},
     {0x72, Instruction("ADC", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte operand = cpu.get_memory()->read(address);
-                         std::byte accumulator = cpu.get_A();
-
-                         auto result = accumulator + operand +
-                                       cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-
-                         bool operand_negative = is_negative(operand);
-                         bool accum_negative = is_negative(accumulator);
-                         bool result_negative = is_negative(result.value);
-
-                         bool overflow = (!operand_negative &&
-                                          !accum_negative && result_negative) ||
-                                         (operand_negative && accum_negative &&
-                                          !result_negative);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result.value);
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return ADC(cpu, address);
                        })},
     {0x92, Instruction("STA", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -499,28 +477,7 @@ CPU6502ISA isa = {
                  })},
     {0xF2, Instruction("SBC", AddressingMode::ZeroPageIndirect,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-                         bool borrow = !cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         uint8_t a = static_cast<uint8_t>(cpu.get_A());
-                         uint8_t m = static_cast<uint8_t>(value);
-
-                         uint16_t result = a - m - borrow;
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry,
-                                                a >= (m + borrow));
-                         std::byte result_byte = std::byte(result);
-
-                         bool overflow = ((cpu.get_A() ^ result_byte) &
-                                          (cpu.get_A() ^ value) &
-                                          std::byte(0x80)) != std::byte(0);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result_byte);
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return SBC(cpu, address);
                        })},
     {0x04,
      Instruction("TSB", AddressingMode::ZeroPage,
@@ -686,57 +643,11 @@ CPU6502ISA isa = {
                        })},
     {0x65, Instruction("ADC", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte operand = cpu.get_memory()->read(address);
-                         std::byte accumulator = cpu.get_A();
-
-                         auto result = accumulator + operand +
-                                       cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-
-                         bool operand_negative = is_negative(operand);
-                         bool accum_negative = is_negative(accumulator);
-                         bool result_negative = is_negative(result.value);
-
-                         bool overflow = (!operand_negative &&
-                                          !accum_negative && result_negative) ||
-                                         (operand_negative && accum_negative &&
-                                          !result_negative);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result.value);
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return ADC(cpu, address);
                        })},
     {0x75, Instruction("ADC", AddressingMode::ZeroPageIndexedX,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte operand = cpu.get_memory()->read(address);
-                         std::byte accumulator = cpu.get_A();
-
-                         auto result = accumulator + operand +
-                                       cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-
-                         bool operand_negative = is_negative(operand);
-                         bool accum_negative = is_negative(accumulator);
-                         bool result_negative = is_negative(result.value);
-
-                         bool overflow = (!operand_negative &&
-                                          !accum_negative && result_negative) ||
-                                         (operand_negative && accum_negative &&
-                                          !result_negative);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result.value);
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return ADC(cpu, address);
                        })},
     {0x85, Instruction("STA", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -790,53 +701,11 @@ CPU6502ISA isa = {
                  })},
     {0xE5, Instruction("SBC", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-                         bool borrow = !cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         uint8_t a = static_cast<uint8_t>(cpu.get_A());
-                         uint8_t m = static_cast<uint8_t>(value);
-
-                         uint16_t result = a - m - borrow;
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry,
-                                                a >= (m + borrow));
-                         std::byte result_byte = std::byte(result);
-
-                         bool overflow = ((cpu.get_A() ^ result_byte) &
-                                          (cpu.get_A() ^ value) &
-                                          std::byte(0x80)) != std::byte(0);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result_byte);
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return SBC(cpu, address);
                        })},
     {0xF5, Instruction("SBC", AddressingMode::ZeroPageIndexedX,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-                         bool borrow = !cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         uint8_t a = static_cast<uint8_t>(cpu.get_A());
-                         uint8_t m = static_cast<uint8_t>(value);
-
-                         uint16_t result = a - m - borrow;
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry,
-                                                a >= (m + borrow));
-                         std::byte result_byte = std::byte(result);
-
-                         bool overflow = ((cpu.get_A() ^ result_byte) &
-                                          (cpu.get_A() ^ value) &
-                                          std::byte(0x80)) != std::byte(0);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result_byte);
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return SBC(cpu, address);
                        })},
     {0x06, Instruction("ASL", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -1036,164 +905,67 @@ CPU6502ISA isa = {
                        })},
     {0x07, Instruction("RMB0", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value & std::byte(~0x01);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return RMBx(cpu, addr, 0);
                        })},
     {0x17, Instruction("RMB1", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value & std::byte(~0x02);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return RMBx(cpu, addr, 1);
                        })},
     {0x27, Instruction("RMB2", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value & std::byte(~0x03);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return RMBx(cpu, addr, 2);
                        })},
     {0x37, Instruction("RMB3", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value & std::byte(~0x04);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return RMBx(cpu, addr, 3);
                        })},
     {0x47, Instruction("RMB4", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value & std::byte(~0x05);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return RMBx(cpu, addr, 4);
                        })},
     {0x57, Instruction("RMB5", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value & std::byte(~0x06);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return RMBx(cpu, addr, 5);
                        })},
     {0x67, Instruction("RMB6", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value & std::byte(~0x07);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return RMBx(cpu, addr, 6);
                        })},
     {0x77, Instruction("RMB7", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value & std::byte(~0x08);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return RMBx(cpu, addr, 7);
                        })},
-
     {0x87, Instruction("SMB0", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value | std::byte(0x01);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return SMBx(cpu, addr, 0);
                        })},
     {0x97, Instruction("SMB1", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value | std::byte(0x02);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return SMBx(cpu, addr, 1);
                        })},
     {0xA7, Instruction("SMB2", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value | std::byte(0x03);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return SMBx(cpu, addr, 2);
                        })},
     {0xB7, Instruction("SMB3", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value | std::byte(0x04);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return SMBx(cpu, addr, 3);
                        })},
     {0xC7, Instruction("SMB4", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value | std::byte(0x05);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return SMBx(cpu, addr, 4);
                        })},
     {0xD7, Instruction("SMB5", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value | std::byte(0x06);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return SMBx(cpu, addr, 5);
                        })},
     {0xE7, Instruction("SMB6", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value | std::byte(0x07);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return SMBx(cpu, addr, 6);
                        })},
     {0xF7, Instruction("SMB7", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(addr);
-
-                         value = value | std::byte(0x08);
-
-                         cpu.get_memory()->write(addr, value);
-
-                         return InstructionErr::OK;
+                         return SMBx(cpu, addr, 7);
                        })},
     {0x08, Instruction("PHP", AddressingMode::Stack,
                        [](CPU6502 &cpu, address addr) -> InstructionErr {
@@ -1377,57 +1149,11 @@ CPU6502ISA isa = {
                        })},
     {0x69, Instruction("ADC", AddressingMode::Immediate,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte operand = cpu.get_memory()->read(address);
-                         std::byte accumulator = cpu.get_A();
-
-                         auto result = accumulator + operand +
-                                       cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-
-                         bool operand_negative = is_negative(operand);
-                         bool accum_negative = is_negative(accumulator);
-                         bool result_negative = is_negative(result.value);
-
-                         bool overflow = (!operand_negative &&
-                                          !accum_negative && result_negative) ||
-                                         (operand_negative && accum_negative &&
-                                          !result_negative);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result.value);
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return ADC(cpu, address);
                        })},
     {0x79, Instruction("ADC", AddressingMode::AbsoluteIndexedY,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte operand = cpu.get_memory()->read(address);
-                         std::byte accumulator = cpu.get_A();
-
-                         auto result = accumulator + operand +
-                                       cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-
-                         bool operand_negative = is_negative(operand);
-                         bool accum_negative = is_negative(accumulator);
-                         bool result_negative = is_negative(result.value);
-
-                         bool overflow = (!operand_negative &&
-                                          !accum_negative && result_negative) ||
-                                         (operand_negative && accum_negative &&
-                                          !result_negative);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result.value);
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return ADC(cpu, address);
                        })},
     {0x89, Instruction("BIT", AddressingMode::Immediate,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -1487,53 +1213,11 @@ CPU6502ISA isa = {
                        })},
     {0xE9, Instruction("SBC", AddressingMode::Immediate,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-                         bool borrow = !cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         uint8_t a = static_cast<uint8_t>(cpu.get_A());
-                         uint8_t m = static_cast<uint8_t>(value);
-
-                         uint16_t result = a - m - borrow;
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry,
-                                                a >= (m + borrow));
-                         std::byte result_byte = std::byte(result);
-
-                         bool overflow = ((cpu.get_A() ^ result_byte) &
-                                          (cpu.get_A() ^ value) &
-                                          std::byte(0x80)) != std::byte(0);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result_byte);
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return SBC(cpu, address);
                        })},
     {0xF9, Instruction("SBC", AddressingMode::AbsoluteIndexedY,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-                         bool borrow = !cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         uint8_t a = static_cast<uint8_t>(cpu.get_A());
-                         uint8_t m = static_cast<uint8_t>(value);
-
-                         uint16_t result = a - m - borrow;
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry,
-                                                a >= (m + borrow));
-                         std::byte result_byte = std::byte(result);
-
-                         bool overflow = ((cpu.get_A() ^ result_byte) &
-                                          (cpu.get_A() ^ value) &
-                                          std::byte(0x80)) != std::byte(0);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result_byte);
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return SBC(cpu, address);
                        })},
     {0x0A, Instruction("ASL", AddressingMode::Accumulator,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -1795,8 +1479,6 @@ CPU6502ISA isa = {
 
                    return InstructionErr::OK;
                  })},
-    // 0xCC
-    // 0xEC
     {0x0D, Instruction("ORA", AddressingMode::Absolute,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
                          cpu.set_A(cpu.get_A() |
@@ -1853,57 +1535,11 @@ CPU6502ISA isa = {
                        })},
     {0x6D, Instruction("ADC", AddressingMode::Absolute,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte operand = cpu.get_memory()->read(address);
-                         std::byte accumulator = cpu.get_A();
-
-                         auto result = accumulator + operand +
-                                       cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-
-                         bool operand_negative = is_negative(operand);
-                         bool accum_negative = is_negative(accumulator);
-                         bool result_negative = is_negative(result.value);
-
-                         bool overflow = (!operand_negative &&
-                                          !accum_negative && result_negative) ||
-                                         (operand_negative && accum_negative &&
-                                          !result_negative);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result.value);
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return ADC(cpu, address);
                        })},
     {0x7D, Instruction("ADC", AddressingMode::AbsoluteIndexedX,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte operand = cpu.get_memory()->read(address);
-                         std::byte accumulator = cpu.get_A();
-
-                         auto result = accumulator + operand +
-                                       cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-
-                         bool operand_negative = is_negative(operand);
-                         bool accum_negative = is_negative(accumulator);
-                         bool result_negative = is_negative(result.value);
-
-                         bool overflow = (!operand_negative &&
-                                          !accum_negative && result_negative) ||
-                                         (operand_negative && accum_negative &&
-                                          !result_negative);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result.value);
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return ADC(cpu, address);
                        })},
     {0x8D, Instruction("STA", AddressingMode::Absolute,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -1957,53 +1593,11 @@ CPU6502ISA isa = {
                  })},
     {0xED, Instruction("SBC", AddressingMode::Absolute,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-                         bool borrow = !cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         uint8_t a = static_cast<uint8_t>(cpu.get_A());
-                         uint8_t m = static_cast<uint8_t>(value);
-
-                         uint16_t result = a - m - borrow;
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry,
-                                                a >= (m + borrow));
-                         std::byte result_byte = std::byte(result);
-
-                         bool overflow = ((cpu.get_A() ^ result_byte) &
-                                          (cpu.get_A() ^ value) &
-                                          std::byte(0x80)) != std::byte(0);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result_byte);
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return SBC(cpu, address);
                        })},
     {0xFD, Instruction("SBC", AddressingMode::AbsoluteIndexedX,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-                         bool borrow = !cpu.get_PSR()->get_bit(psr_bit::carry);
-
-                         uint8_t a = static_cast<uint8_t>(cpu.get_A());
-                         uint8_t m = static_cast<uint8_t>(value);
-
-                         uint16_t result = a - m - borrow;
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry,
-                                                a >= (m + borrow));
-                         std::byte result_byte = std::byte(result);
-
-                         bool overflow = ((cpu.get_A() ^ result_byte) &
-                                          (cpu.get_A() ^ value) &
-                                          std::byte(0x80)) != std::byte(0);
-
-                         cpu.get_PSR()->set_bit(psr_bit::overflow, overflow);
-
-                         cpu.set_A(result_byte);
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return SBC(cpu, address);
                        })},
     {0x0E, Instruction("ASL", AddressingMode::Absolute,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -2203,197 +1797,68 @@ CPU6502ISA isa = {
                        })},
     {0x0F, Instruction("BBR0", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (!is_bit_set(value, 0)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBRx(cpu, address, 0);
                        })},
     {0x1F, Instruction("BBR1", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (!is_bit_set(value, 1)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBRx(cpu, address, 1);
                        })},
     {0x2F, Instruction("BBR2", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (!is_bit_set(value, 2)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBRx(cpu, address, 2);
                        })},
     {0x3F, Instruction("BBR3", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (!is_bit_set(value, 3)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBRx(cpu, address, 3);
                        })},
     {0x4F, Instruction("BBR4", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (!is_bit_set(value, 4)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBRx(cpu, address, 4);
                        })},
     {0x5F, Instruction("BBR5", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (!is_bit_set(value, 5)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBRx(cpu, address, 5);
                        })},
     {0x6F, Instruction("BBR6", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (!is_bit_set(value, 6)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBRx(cpu, address, 6);
                        })},
     {0x7F, Instruction("BBR7", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (!is_bit_set(value, 7)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBRx(cpu, address, 7);
                        })},
     {0x8F, Instruction("BBS0", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (is_bit_set(value, 0)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBSx(cpu, address, 0);
                        })},
     {0x9F, Instruction("BBS1", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (is_bit_set(value, 1)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBSx(cpu, address, 1);
                        })},
     {0xAF, Instruction("BBS2", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (is_bit_set(value, 2)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBSx(cpu, address, 2);
                        })},
     {0xBF, Instruction("BBS3", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (is_bit_set(value, 3)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBSx(cpu, address, 3);
                        })},
     {0xCF, Instruction("BBS4", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (is_bit_set(value, 4)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBSx(cpu, address, 4);
                        })},
     {0xDF, Instruction("BBS5", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (is_bit_set(value, 5)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBSx(cpu, address, 5);
                        })},
     {0xEF, Instruction("BBS6", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (is_bit_set(value, 6)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBSx(cpu, address, 6);
                        })},
     {0xFF, Instruction("BBS7", AddressingMode::PCRelative,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         std::byte value = cpu.get_memory()->read(address);
-
-                         if (is_bit_set(value, 7)) {
-                           cpu.set_PC(address);
-
-                           return InstructionErr::OKPCModified;
-                         }
-
-                         return InstructionErr::OK;
+                         return BBSx(cpu, address, 7);
                        })},
-    ///  HERE
     {0xA9, Instruction("LDA", AddressingMode::Immediate,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
                          cpu.set_A(cpu.get_memory()->read(address));
