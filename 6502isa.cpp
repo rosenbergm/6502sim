@@ -42,8 +42,7 @@ inline InstructionErr AND(CPU6502 &cpu, address address) {
 
 inline InstructionErr ASLmem(CPU6502 &cpu, address address) {
   auto value = cpu.get_memory()->read(address);
-  cpu.get_PSR()->set_bit(psr_bit::carry,
-                         (value & NEGATIVE_FLAG_MASK) != ZERO_BYTE);
+  cpu.get_PSR()->set_bit(psr_bit::carry, (value & MS_BIT_MASK) != ZERO_BYTE);
 
   cpu.set_A(value << 1);
 
@@ -1160,7 +1159,7 @@ CPU6502ISA isa = {
                        [](CPU6502 &cpu, address _) -> InstructionErr {
                          auto value = cpu.get_A();
                          cpu.get_PSR()->set_bit(psr_bit::carry,
-                                                (value & NEGATIVE_FLAG_MASK) !=
+                                                (value & MS_BIT_MASK) !=
                                                     ZERO_BYTE);
 
                          cpu.set_A(value << 1);

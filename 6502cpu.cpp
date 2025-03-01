@@ -7,7 +7,7 @@
 /** Sets the ZERO (Z) and NEGATIVE (N) flags according to the value passed */
 void CPU6502::update_flags(std::byte value) {
   P.set_bit(psr_bit::zero, value == ZERO_BYTE);
-  P.set_bit(psr_bit::negative, (value & NEGATIVE_FLAG_MASK) != ZERO_BYTE);
+  P.set_bit(psr_bit::negative, (value & MS_BIT_MASK) != ZERO_BYTE);
 }
 
 /**
