@@ -17,6 +17,7 @@ constexpr unsigned short RESET_VECTOR_HIGH = 0xFFFD;
 constexpr size_t STACK_START = 0x1FF;
 
 constexpr std::byte MS_BIT_MASK = std::byte(0x80);
+constexpr std::byte LS_BIT_MASK = std::byte(0x01);
 
 constexpr const char *STP_MSG = "== ENCOUNTERED STP, terminating... ==";
 
