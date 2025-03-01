@@ -32,6 +32,26 @@ inline InstructionErr ADC(CPU6502 &cpu, address address) {
   return InstructionErr::OK;
 }
 
+inline InstructionErr AND(CPU6502 &cpu, address address) {
+  cpu.set_A(cpu.get_A() & cpu.get_memory()->read(address));
+
+  cpu.update_flags(cpu.get_A());
+
+  return InstructionErr::OK;
+}
+
+inline InstructionErr ASLmem(CPU6502 &cpu, address address) {
+  auto value = cpu.get_memory()->read(address);
+  cpu.get_PSR()->set_bit(psr_bit::carry,
+                         (value & NEGATIVE_FLAG_MASK) != ZERO_BYTE);
+
+  cpu.set_A(value << 1);
+
+  cpu.update_flags(cpu.get_A());
+
+  return InstructionErr::OK;
+}
+
 inline InstructionErr SBC(CPU6502 &cpu, address address) {
   std::byte value = cpu.get_memory()->read(address);
   bool borrow = !cpu.get_PSR()->get_bit(psr_bit::carry);
@@ -94,6 +114,18 @@ inline InstructionErr SMBx(CPU6502 &cpu, address address, int bit) {
 
   return InstructionErr::OK;
 }
+
+inline InstructionErr CMP(CPU6502 &cpu, address address) {
+  auto acc = cpu.get_A();
+  auto value = cpu.get_memory()->read(address);
+
+  cpu.get_PSR()->set_bit(psr_bit::carry, acc >= value);
+  cpu.get_PSR()->set_bit(psr_bit::zero, acc == value);
+  cpu.get_PSR()->set_bit(psr_bit::negative, (acc - value).negative);
+
+  return InstructionErr::OK;
+}
+
 } // namespace
 
 CPU6502ISA isa = {
@@ -286,21 +318,11 @@ CPU6502ISA isa = {
                        })},
     {0x21, Instruction("AND", AddressingMode::ZeroPageIndexedIndirect,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         cpu.set_A(cpu.get_A() &
-                                   cpu.get_memory()->read(address));
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return AND(cpu, address);
                        })},
     {0x31, Instruction("AND", AddressingMode::ZeroPageIndirectIndexedY,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         cpu.set_A(cpu.get_A() &
-                                   cpu.get_memory()->read(address));
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return AND(cpu, address);
                        })},
     {0x41, Instruction("EOR", AddressingMode::ZeroPageIndexedIndirect,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -381,30 +403,14 @@ CPU6502ISA isa = {
 
                          return InstructionErr::OK;
                        })},
-    {0xC1,
-     Instruction("CMP", AddressingMode::ZeroPageIndexedIndirect,
-                 [](CPU6502 &cpu, address address) -> InstructionErr {
-                   auto result = cpu.get_A() - cpu.get_memory()->read(address);
-
-                   cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-                   cpu.get_PSR()->set_bit(psr_bit::zero,
-                                          result.value >= std::byte(0));
-                   cpu.get_PSR()->set_bit(psr_bit::negative, result.negative);
-
-                   return InstructionErr::OK;
-                 })},
-    {0xD1,
-     Instruction("CMP", AddressingMode::ZeroPageIndirectIndexedY,
-                 [](CPU6502 &cpu, address address) -> InstructionErr {
-                   auto result = cpu.get_A() - cpu.get_memory()->read(address);
-
-                   cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-                   cpu.get_PSR()->set_bit(psr_bit::zero,
-                                          result.value >= std::byte(0));
-                   cpu.get_PSR()->set_bit(psr_bit::negative, result.negative);
-
-                   return InstructionErr::OK;
-                 })},
+    {0xC1, Instruction("CMP", AddressingMode::ZeroPageIndexedIndirect,
+                       [](CPU6502 &cpu, address address) -> InstructionErr {
+                         return CMP(cpu, address);
+                       })},
+    {0xD1, Instruction("CMP", AddressingMode::ZeroPageIndirectIndexedY,
+                       [](CPU6502 &cpu, address address) -> InstructionErr {
+                         return CMP(cpu, address);
+                       })},
     {0xE1, Instruction("SBC", AddressingMode::ZeroPageIndexedIndirect,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
                          return SBC(cpu, address);
@@ -424,12 +430,7 @@ CPU6502ISA isa = {
                        })},
     {0x32, Instruction("AND", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         cpu.set_A(cpu.get_A() &
-                                   cpu.get_memory()->read(address));
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return AND(cpu, address);
                        })},
     {0x52, Instruction("EOR", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -607,21 +608,11 @@ CPU6502ISA isa = {
                        })},
     {0x25, Instruction("AND", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         cpu.set_A(cpu.get_A() &
-                                   cpu.get_memory()->read(address));
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return AND(cpu, address);
                        })},
     {0x35, Instruction("AND", AddressingMode::ZeroPageIndexedX,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         cpu.set_A(cpu.get_A() &
-                                   cpu.get_memory()->read(address));
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return AND(cpu, address);
                        })},
     {0x45, Instruction("EOR", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -675,30 +666,14 @@ CPU6502ISA isa = {
 
                          return InstructionErr::OK;
                        })},
-    {0xC5,
-     Instruction("CMP", AddressingMode::ZeroPage,
-                 [](CPU6502 &cpu, address address) -> InstructionErr {
-                   auto result = cpu.get_A() - cpu.get_memory()->read(address);
-
-                   cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-                   cpu.get_PSR()->set_bit(psr_bit::zero,
-                                          result.value >= std::byte(0));
-                   cpu.get_PSR()->set_bit(psr_bit::negative, result.negative);
-
-                   return InstructionErr::OK;
-                 })},
-    {0xD5,
-     Instruction("CMP", AddressingMode::ZeroPageIndexedX,
-                 [](CPU6502 &cpu, address address) -> InstructionErr {
-                   auto result = cpu.get_A() - cpu.get_memory()->read(address);
-
-                   cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-                   cpu.get_PSR()->set_bit(psr_bit::zero,
-                                          result.value >= std::byte(0));
-                   cpu.get_PSR()->set_bit(psr_bit::negative, result.negative);
-
-                   return InstructionErr::OK;
-                 })},
+    {0xC5, Instruction("CMP", AddressingMode::ZeroPage,
+                       [](CPU6502 &cpu, address address) -> InstructionErr {
+                         return CMP(cpu, address);
+                       })},
+    {0xD5, Instruction("CMP", AddressingMode::ZeroPageIndexedX,
+                       [](CPU6502 &cpu, address address) -> InstructionErr {
+                         return CMP(cpu, address);
+                       })},
     {0xE5, Instruction("SBC", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
                          return SBC(cpu, address);
@@ -709,27 +684,11 @@ CPU6502ISA isa = {
                        })},
     {0x06, Instruction("ASL", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         auto value = cpu.get_memory()->read(address);
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry, is_zero(value));
-
-                         value = value << 1;
-
-                         cpu.get_memory()->write(address, value);
-
-                         return InstructionErr::OK;
+                         return ASLmem(cpu, address);
                        })},
     {0x16, Instruction("ASL", AddressingMode::ZeroPageIndexedX,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         auto value = cpu.get_memory()->read(address);
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry, is_zero(value));
-
-                         value = value << 1;
-
-                         cpu.get_memory()->write(address, value);
-
-                         return InstructionErr::OK;
+                         return ASLmem(cpu, address);
                        })},
     {0x26, Instruction("ROL", AddressingMode::ZeroPage,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -1113,21 +1072,11 @@ CPU6502ISA isa = {
                        })},
     {0x29, Instruction("AND", AddressingMode::Immediate,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         cpu.set_A(cpu.get_A() &
-                                   cpu.get_memory()->read(address));
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return AND(cpu, address);
                        })},
     {0x39, Instruction("AND", AddressingMode::AbsoluteIndexedY,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         cpu.set_A(cpu.get_A() &
-                                   cpu.get_memory()->read(address));
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return AND(cpu, address);
                        })},
     {0x49, Instruction("EOR", AddressingMode::Immediate,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -1193,23 +1142,11 @@ CPU6502ISA isa = {
                        })},
     {0xC9, Instruction("CMP", AddressingMode::Immediate,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         auto result =
-                             cpu.get_A() - cpu.get_memory()->read(address);
-
-                         cpu.update_flags(result.value);
-                         cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-
-                         return InstructionErr::OK;
+                         return CMP(cpu, address);
                        })},
     {0xD9, Instruction("CMP", AddressingMode::AbsoluteIndexedY,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         auto result =
-                             cpu.get_A() - cpu.get_memory()->read(address);
-
-                         cpu.update_flags(result.value);
-                         cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-
-                         return InstructionErr::OK;
+                         return CMP(cpu, address);
                        })},
     {0xE9, Instruction("SBC", AddressingMode::Immediate,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -1220,14 +1157,15 @@ CPU6502ISA isa = {
                          return SBC(cpu, address);
                        })},
     {0x0A, Instruction("ASL", AddressingMode::Accumulator,
-                       [](CPU6502 &cpu, address address) -> InstructionErr {
+                       [](CPU6502 &cpu, address _) -> InstructionErr {
                          auto value = cpu.get_A();
+                         cpu.get_PSR()->set_bit(psr_bit::carry,
+                                                (value & NEGATIVE_FLAG_MASK) !=
+                                                    ZERO_BYTE);
 
-                         cpu.get_PSR()->set_bit(psr_bit::carry, is_zero(value));
+                         cpu.set_A(value << 1);
 
-                         value = value << 1;
-
-                         cpu.get_memory()->write(address, value);
+                         cpu.update_flags(cpu.get_A());
 
                          return InstructionErr::OK;
                        })},
@@ -1499,21 +1437,11 @@ CPU6502ISA isa = {
                        })},
     {0x2D, Instruction("AND", AddressingMode::Absolute,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         cpu.set_A(cpu.get_A() &
-                                   cpu.get_memory()->read(address));
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return AND(cpu, address);
                        })},
     {0x3D, Instruction("AND", AddressingMode::AbsoluteIndexedX,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         cpu.set_A(cpu.get_A() &
-                                   cpu.get_memory()->read(address));
-
-                         cpu.update_flags(cpu.get_A());
-
-                         return InstructionErr::OK;
+                         return AND(cpu, address);
                        })},
     {0x4D, Instruction("EOR", AddressingMode::Absolute,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
@@ -1567,30 +1495,14 @@ CPU6502ISA isa = {
 
                          return InstructionErr::OK;
                        })},
-    {0xCD,
-     Instruction("CMP", AddressingMode::Absolute,
-                 [](CPU6502 &cpu, address address) -> InstructionErr {
-                   auto result = cpu.get_A() - cpu.get_memory()->read(address);
-
-                   cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-                   cpu.get_PSR()->set_bit(psr_bit::zero,
-                                          result.value >= std::byte(0));
-                   cpu.get_PSR()->set_bit(psr_bit::negative, result.negative);
-
-                   return InstructionErr::OK;
-                 })},
-    {0xDD,
-     Instruction("CMP", AddressingMode::AbsoluteIndexedX,
-                 [](CPU6502 &cpu, address address) -> InstructionErr {
-                   auto result = cpu.get_A() - cpu.get_memory()->read(address);
-
-                   cpu.get_PSR()->set_bit(psr_bit::carry, result.carry);
-                   cpu.get_PSR()->set_bit(psr_bit::zero,
-                                          result.value >= std::byte(0));
-                   cpu.get_PSR()->set_bit(psr_bit::negative, result.negative);
-
-                   return InstructionErr::OK;
-                 })},
+    {0xCD, Instruction("CMP", AddressingMode::Absolute,
+                       [](CPU6502 &cpu, address address) -> InstructionErr {
+                         return CMP(cpu, address);
+                       })},
+    {0xDD, Instruction("CMP", AddressingMode::AbsoluteIndexedX,
+                       [](CPU6502 &cpu, address address) -> InstructionErr {
+                         return CMP(cpu, address);
+                       })},
     {0xED, Instruction("SBC", AddressingMode::Absolute,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
                          return SBC(cpu, address);
@@ -1601,27 +1513,11 @@ CPU6502ISA isa = {
                        })},
     {0x0E, Instruction("ASL", AddressingMode::Absolute,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         auto value = cpu.get_memory()->read(address);
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry, is_zero(value));
-
-                         value = value << 1;
-
-                         cpu.get_memory()->write(address, value);
-
-                         return InstructionErr::OK;
+                         return ASLmem(cpu, address);
                        })},
     {0x1E, Instruction("ASL", AddressingMode::AbsoluteIndexedX,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
-                         auto value = cpu.get_memory()->read(address);
-
-                         cpu.get_PSR()->set_bit(psr_bit::carry, is_zero(value));
-
-                         value = value << 1;
-
-                         cpu.get_memory()->write(address, value);
-
-                         return InstructionErr::OK;
+                         return ASLmem(cpu, address);
                        })},
     {0x2E, Instruction("ROL", AddressingMode::Absolute,
                        [](CPU6502 &cpu, address address) -> InstructionErr {
