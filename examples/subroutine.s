@@ -8,6 +8,8 @@
 start:
     lda #1
     jsr reset_a
+    lda #69
+    DBGBREAK
     stp
 
 reset_a:
