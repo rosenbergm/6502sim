@@ -1,10 +1,6 @@
 # Editor configuration
 .vscode
 
-# Generated docs
-html
-latex
-
 # Assembly binaries
 *.bin
 
