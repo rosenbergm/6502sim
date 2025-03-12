@@ -7,7 +7,8 @@
 constexpr const char *USAGE =
     "\n{} <path to binary file> [-d|--debug|-v|--verbose]\n"
     "  -d, --debug: enable debug mode\n"
-    "  -v, --verbose: enable verbose mode\n\n";
+    "  -v, --verbose: enable verbose mode\n"
+    "  --print-device ADDR: set address of print device to ADDR\n\n";
 
 int main(int argc, char **argv) {
   GP_Memory memory;
@@ -48,29 +49,42 @@ int main(int argc, char **argv) {
         } else if (strcmp(arg, "--verbose") == 0) {
           // verbose
           cpu.set_verbose(true);
-        }
-      } else {
-        // short flag
-        if (arg[1] == 'd') {
-          // debug
-          cpu.set_debug(true);
-        } else if (arg[1] == 'v') {
-          // verbose
-          cpu.set_verbose(true);
+        } else if (strcmp(arg, "--print-device") == 0) {
+          // set print device address
+          char *addr_str = argv[++i];
+
+          try {
+            address print_addr = address(std::stoul(addr_str, nullptr, 16));
+
+            memory.set_print_device(print_addr);
+          } catch (std::invalid_argument &e) {
+            std::cerr << "Invalid address: " << addr_str << std::endl;
+
+            return 1;
+          }
+        } else {
+          // short flag
+          if (arg[1] == 'd') {
+            // debug
+            cpu.set_debug(true);
+          } else if (arg[1] == 'v') {
+            // verbose
+            cpu.set_verbose(true);
+          }
         }
       }
     }
+
+    Debugger debugger(&cpu);
+
+    try {
+      debugger.run();
+    } catch (CPUException &e) {
+      std::cerr << e.message() << std::endl;
+
+      return 1;
+    }
+
+    return 0;
   }
-
-  Debugger debugger(&cpu);
-
-  try {
-    debugger.run();
-  } catch (CPUException &e) {
-    std::cerr << e.message() << std::endl;
-
-    return 1;
-  }
-
-  return 0;
 }
