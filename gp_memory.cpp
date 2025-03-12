@@ -13,7 +13,7 @@ std::byte GP_Memory::read(address address) const {
 std::byte GP_Memory::read(size_t address) const { return memory_[address]; }
 
 void GP_Memory::write(address address, std::byte value) {
-  if (address == DEFAULT_OUTPUT_ADDRESS) {
+  if (address == print_device_addr_) {
     std::cout << static_cast<char>(value);
   }
 
