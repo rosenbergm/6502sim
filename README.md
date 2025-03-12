@@ -81,6 +81,8 @@ if you have the source `<program>.s` file in project root as well.
   -v, --verbose: enable verbose mode
 ```
 
+If running via `make`, you can run the program with `make run ARGS="..."`.
+
 ## Useful links
 
 - [W65C02S manual](manuals/w65c02s.pdf) (referred to as "the manual")
