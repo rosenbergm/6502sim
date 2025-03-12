@@ -26,8 +26,8 @@ var NAVTREE =
 [
   [ "6502SIM", "index.html", [
     [ "6502sim", "md_README.html", [
-      [ "About the 6502", "md_README.html#autotoc_md1", null ],
-      [ "Features", "md_README.html#autotoc_md2", [
+      [ "Features", "md_README.html#autotoc_md1", null ],
+      [ "About the 6502", "md_README.html#autotoc_md2", [
         [ "Debugger", "md_README.html#autotoc_md3", null ],
         [ "Print device", "md_README.html#autotoc_md4", null ]
       ] ],

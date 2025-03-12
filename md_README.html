@@ -100,6 +100,16 @@ $(document).ready(function(){initNavTree('md_README.html',''); initResizable(); 
 <div class="contents">
 <div class="textblock"><p>A minimal 6502 processor simulator written in C++ as part of Programming in C++ course I took on MFF CUNI.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
+Features</h1>
+<p>This simulator simulates the W65C02S, a backwards-compatible modernized version of the 6502. The benefits of using this processor are mostly seen in hardware applications, not in the emulation. The W65C02S is CMOS-based, which results in better performance. It also adds a few new instructions, addressing modes and fixes bugs.</p>
+<p>Hereafter, "6502" refers to the W65C02S unless stated otherwise.</p>
+<ul>
+<li>Full instruction set support</li>
+<li>Full addressing mode support</li>
+<li><a class="el" href="classDebugger.html">Debugger</a> with basic inspection (registers, memory, stepping)</li>
+<li>Memory-mapped simple unbuffered print device</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
 About the 6502</h1>
 <p>The 6502 processor is an 8-bit processor used in many home computers in the second half of the last century (including the Commodore 64, Apple II, and many more). It features an 8 bit data line and 16 bits of address space (64K of adressable memory).</p>
 <p>The CPU is based on the accumulator-based architecture with support of twos-complement negative number representation and binary coded decimals. It has one 8-bit accumulator (A), two 8-bit index registers (X, Y) used for indexing into memory which is supported by the addressing modes, stack pointer (SP), a program counter (PC) and a processor status register (<a class="el" href="classPSR.html">PSR</a>).</p>
@@ -115,16 +125,6 @@ About the 6502</h1>
 <li>(Z) Zero: set when a result of an operation is zero</li>
 <li>(C) Carry: set when a result of an arithmetic operation yields a carry bit on MSb</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Features</h1>
-<p>This simulator simulates the W65C02S, a backwards-compatible modernized version of the 6502. The benefits of using this processor are mostly seen in hardware applications, not in the emulation. The W65C02S is CMOS-based, which results in better performance. It also adds a few new instructions, addressing modes and fixes bugs.</p>
-<p>Hereafter, "6502" refers to the W65C02S unless stated otherwise.</p>
-<ul>
-<li>Full instruction set support</li>
-<li>Full addressing mode support</li>
-<li><a class="el" href="classDebugger.html">Debugger</a> with basic inspection (registers, memory, stepping)</li>
-<li>Memory-mapped simple unbuffered print device</li>
-</ul>
 <h2><a class="anchor" id="autotoc_md3"></a>
 Debugger</h2>
 <p>When the emulator is run with the <code>-d</code> (<code>--debug</code>) flag, debugging mode is enabled. With the imported <a href="examples/includes/debug.inc"><code>debuc.inc</code></a> file in an assembly file, the <code>DBGBREAK</code> macro can be used to enter the debugger from assembly.</p>
@@ -139,7 +139,7 @@ Debugger</h2>
 </ul>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Print device</h2>
-<p>The emulator is capable of printing out ASCII characters. When a byte is stored at <code>FFFB</code>, it is both stored in the and printed out to standard output.</p>
+<p>The emulator is capable of printing out ASCII characters. When a byte is stored at the print device address (default is <code>FFFB</code>), it is both stored in the and printed out to standard output.</p>
 <p>Use the <code>PRINT</code> macro in <a href="examples/includes/print.inc"><code>print.inc</code></a>.</p>
 <h1><a class="anchor" id="autotoc_md5"></a>
 Usage</h1>
