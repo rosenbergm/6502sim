@@ -10,16 +10,14 @@ constexpr const char *USAGE =
     "ADDR|--memory-size SIZE]\n"
     "  -d, --debug: enable debug mode\n"
     "  -v, --verbose: enable verbose mode\n"
-    "  --print-device ADDR: set address of print device to ADDR, default {:X}\n"
-    "  --memory-size SIZE: set size of memory (hex number of bytes), default "
+    "  --print-device ADDR: set address of print device to ADDR, default "
     "{:X}\n\n";
 
 int main(int argc, char **argv) {
   GP_Memory memory;
 
   if (argc <= 1) {
-    std::cout << std::format(USAGE, argv[0], DEFAULT_OUTPUT_ADDRESS,
-                             DEFAULT_MEMORY_SIZE);
+    std::cout << std::format(USAGE, argv[0], DEFAULT_OUTPUT_ADDRESS);
 
     return 1;
   }
