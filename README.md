@@ -3,6 +3,21 @@
 A minimal 6502 processor simulator written in C++ as part of Programming in C++
 course I took on MFF CUNI.
 
+## Features
+
+This simulator simulates the W65C02S, a backwards-compatible modernized version
+of the 6502. The benefits of using this processor are mostly seen in hardware
+applications, not in the emulation. The W65C02S is CMOS-based, which results
+in better performance. It also adds a few new instructions, addressing modes
+and fixes bugs.
+
+Hereafter, "6502" refers to the W65C02S unless stated otherwise.
+
+- Full instruction set support
+- Full addressing mode support
+- Debugger with basic inspection (registers, memory, stepping)
+- Memory-mapped simple unbuffered print device
+
 ## About the 6502
 
 The 6502 processor is an 8-bit processor used in many home computers in the
@@ -32,21 +47,6 @@ The processor status register is an 8-bit register with the following flags:
 - (Z) Zero: set when a result of an operation is zero
 - (C) Carry: set when a result of an arithmetic operation yields a carry bit on MSb
 
-## Features
-
-This simulator simulates the W65C02S, a backwards-compatible modernized version
-of the 6502. The benefits of using this processor are mostly seen in hardware
-applications, not in the emulation. The W65C02S is CMOS-based, which results
-in better performance. It also adds a few new instructions, addressing modes
-and fixes bugs.
-
-Hereafter, "6502" refers to the W65C02S unless stated otherwise.
-
-- Full instruction set support
-- Full addressing mode support
-- Debugger with basic inspection (registers, memory, stepping)
-- Memory-mapped simple unbuffered print device
-
 ### Debugger
 
 When the emulator is run with the `-d` (`--debug`) flag, debugging mode is enabled.
@@ -65,7 +65,8 @@ In the debugger, these commands can be used:
 ### Print device
 
 The emulator is capable of printing out ASCII characters. When a byte is stored
-at `FFFB`, it is both stored in the and printed out to standard output.
+at the print device address (default is `FFFB`), it is both stored in the and
+printed out to standard output.
 
 Use the `PRINT` macro in [`print.inc`](examples/includes/print.inc).
 

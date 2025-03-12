@@ -1,20 +1,25 @@
 #include "6502cpu.h"
 #include "debugger.h"
+#include "gp_memory.h"
 #include <cstring>
 #include <format>
 #include <iostream>
 
 constexpr const char *USAGE =
-    "\n{} <path to binary file> [-d|--debug|-v|--verbose]\n"
+    "\n{} <path to binary file> [-d|--debug|-v|--verbose|--print-device "
+    "ADDR|--memory-size SIZE]\n"
     "  -d, --debug: enable debug mode\n"
     "  -v, --verbose: enable verbose mode\n"
-    "  --print-device ADDR: set address of print device to ADDR\n\n";
+    "  --print-device ADDR: set address of print device to ADDR, default {:X}\n"
+    "  --memory-size SIZE: set size of memory (hex number of bytes), default "
+    "{:X}\n\n";
 
 int main(int argc, char **argv) {
   GP_Memory memory;
 
   if (argc <= 1) {
-    std::cout << std::format(USAGE, argv[0]);
+    std::cout << std::format(USAGE, argv[0], DEFAULT_OUTPUT_ADDRESS,
+                             DEFAULT_MEMORY_SIZE);
 
     return 1;
   }
