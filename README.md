@@ -3,6 +3,8 @@
 A minimal 6502 processor simulator written in C++ as part of Programming in C++
 course I took on MFF CUNI.
 
+Documentation is available [here](https://rosenbergm.github.io/6502sim).
+
 ## Features
 
 This simulator simulates the W65C02S, a backwards-compatible modernized version
