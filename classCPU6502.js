@@ -1,5 +1,6 @@
 var classCPU6502 =
 [
+    [ "CPU6502", "classCPU6502.html#a088452e1727f362add3b5d803cb0bf9b", null ],
     [ "execute", "classCPU6502.html#aca06dd908841b9880a5b027c36e180c3", null ],
     [ "pop_stack", "classCPU6502.html#a6c4da15a308954811145aef4b29ef990", null ],
     [ "push_stack", "classCPU6502.html#a9fa5f617a18acf50c76c58dd7443abbe", null ],

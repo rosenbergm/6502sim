@@ -117,11 +117,11 @@ $(document).ready(function(){initNavTree('gp__memory_8h_source.html',''); initRe
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <a class="code hl_class" href="classGP__Memory.html">GP_Memory</a>() : memory_(), print_device_addr_(DEFAULT_OUTPUT_ADDRESS) {}</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keywordtype">size_t</span> size() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keywordtype">size_t</span> <a class="code hl_function" href="classGP__Memory.html#a03b719e4f636ba1520ca31df1af651ce">size</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  std::byte read(<a class="code hl_class" href="classaddress.html">address</a> <a class="code hl_class" href="classaddress.html">address</a>) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  std::byte read(<span class="keywordtype">size_t</span> <a class="code hl_class" href="classaddress.html">address</a>) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keywordtype">void</span> write(<a class="code hl_class" href="classaddress.html">address</a> <a class="code hl_class" href="classaddress.html">address</a>, std::byte value);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  std::byte <a class="code hl_function" href="classGP__Memory.html#a137b4c481288e6f2eb5de177f7a7fcb0">read</a>(<a class="code hl_class" href="classaddress.html">address</a> <a class="code hl_class" href="classaddress.html">address</a>) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>  std::byte <a class="code hl_function" href="classGP__Memory.html#a137b4c481288e6f2eb5de177f7a7fcb0">read</a>(<span class="keywordtype">size_t</span> <a class="code hl_class" href="classaddress.html">address</a>) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classGP__Memory.html#a0cfb3e72b2eaff8bcf34d31bbb52e07a">write</a>(<a class="code hl_class" href="classaddress.html">address</a> <a class="code hl_class" href="classaddress.html">address</a>, std::byte value);</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="keywordtype">void</span> <span class="keyword">import</span>(std::istream &amp;s);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keywordtype">void</span> <span class="keyword">import</span>(<span class="keyword">const</span> std::string &amp;filename);</div>
@@ -132,6 +132,9 @@ $(document).ready(function(){initNavTree('gp__memory_8h_source.html',''); initRe
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassGP__Memory_html"><div class="ttname"><a href="classGP__Memory.html">GP_Memory</a></div><div class="ttdef"><b>Definition:</b> gp_memory.h:18</div></div>
+<div class="ttc" id="aclassGP__Memory_html_a03b719e4f636ba1520ca31df1af651ce"><div class="ttname"><a href="classGP__Memory.html#a03b719e4f636ba1520ca31df1af651ce">GP_Memory::size</a></div><div class="ttdeci">size_t size() const</div><div class="ttdef"><b>Definition:</b> gp_memory.cpp:11</div></div>
+<div class="ttc" id="aclassGP__Memory_html_a0cfb3e72b2eaff8bcf34d31bbb52e07a"><div class="ttname"><a href="classGP__Memory.html#a0cfb3e72b2eaff8bcf34d31bbb52e07a">GP_Memory::write</a></div><div class="ttdeci">void write(address address, std::byte value)</div><div class="ttdef"><b>Definition:</b> gp_memory.cpp:39</div></div>
+<div class="ttc" id="aclassGP__Memory_html_a137b4c481288e6f2eb5de177f7a7fcb0"><div class="ttname"><a href="classGP__Memory.html#a137b4c481288e6f2eb5de177f7a7fcb0">GP_Memory::read</a></div><div class="ttdeci">std::byte read(address address) const</div><div class="ttdef"><b>Definition:</b> gp_memory.cpp:20</div></div>
 <div class="ttc" id="aclassaddress_html"><div class="ttname"><a href="classaddress.html">address</a></div><div class="ttdef"><b>Definition:</b> address.h:8</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

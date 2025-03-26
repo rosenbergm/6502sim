@@ -113,17 +113,35 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:abfd1615a8bb140e70b3724214deee7df"><td class="memItemLeft" align="right" valign="top"><a id="abfd1615a8bb140e70b3724214deee7df" name="abfd1615a8bb140e70b3724214deee7df"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="memdesc:abfd1615a8bb140e70b3724214deee7df"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the instruction specified in the ABI (or datasheet). <br /></td></tr>
 <tr class="separator:abfd1615a8bb140e70b3724214deee7df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6ee63dab4a498543e74a1e418ec9f29"><td class="memItemLeft" align="right" valign="top"><a id="ad6ee63dab4a498543e74a1e418ec9f29" name="ad6ee63dab4a498543e74a1e418ec9f29"></a>
 AddressingMode&#160;</td><td class="memItemRight" valign="bottom"><b>mode</b></td></tr>
+<tr class="memdesc:ad6ee63dab4a498543e74a1e418ec9f29"><td class="mdescLeft">&#160;</td><td class="mdescRight">The addressing mode of the instruction. <br /></td></tr>
 <tr class="separator:ad6ee63dab4a498543e74a1e418ec9f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbe0c739d348619c7a61d8509d17113b"><td class="memItemLeft" align="right" valign="top"><a id="acbe0c739d348619c7a61d8509d17113b" name="acbe0c739d348619c7a61d8509d17113b"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>bytes</b></td></tr>
+<tr class="memdesc:acbe0c739d348619c7a61d8509d17113b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of bytes the instruction takes up in memory. <br /></td></tr>
 <tr class="separator:acbe0c739d348619c7a61d8509d17113b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9117d60c1f039a86888ea4e00c4e97f1"><td class="memItemLeft" align="right" valign="top"><a id="a9117d60c1f039a86888ea4e00c4e97f1" name="a9117d60c1f039a86888ea4e00c4e97f1"></a>
-std::function&lt; InstructionErr(<a class="el" href="classCPU6502.html">CPU6502</a> &amp;, <a class="el" href="classaddress.html">address</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>execute</b></td></tr>
+<tr class="memitem:a9117d60c1f039a86888ea4e00c4e97f1"><td class="memItemLeft" align="right" valign="top">std::function&lt; InstructionErr(<a class="el" href="classCPU6502.html">CPU6502</a> &amp;, <a class="el" href="classaddress.html">address</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstruction.html#a9117d60c1f039a86888ea4e00c4e97f1">execute</a></td></tr>
 <tr class="separator:a9117d60c1f039a86888ea4e00c4e97f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a9117d60c1f039a86888ea4e00c4e97f1" name="a9117d60c1f039a86888ea4e00c4e97f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9117d60c1f039a86888ea4e00c4e97f1">&#9670;&#160;</a></span>execute</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt;InstructionErr(<a class="el" href="classCPU6502.html">CPU6502</a> &amp;, <a class="el" href="classaddress.html">address</a>)&gt; Instruction::execute</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The function to execute the instruction. Accepts the CPU from which it gets context from. </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="instruction__types_8h_source.html">instruction_types.h</a></li>
 </ul>

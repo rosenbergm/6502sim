@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['execute_0',['execute',['../classCPU6502.html#aca06dd908841b9880a5b027c36e180c3',1,'CPU6502']]]
+  ['cpu6502_0',['CPU6502',['../classCPU6502.html#a088452e1727f362add3b5d803cb0bf9b',1,'CPU6502']]]
 ];

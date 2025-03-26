@@ -109,14 +109,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afaa3bc84c7743c26c27968b8faa43fd0"><td class="memItemLeft" align="right" valign="top"><a id="afaa3bc84c7743c26c27968b8faa43fd0" name="afaa3bc84c7743c26c27968b8faa43fd0"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PSR</b> (std::byte psr)</td></tr>
 <tr class="separator:afaa3bc84c7743c26c27968b8faa43fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab208a31083c7b2f2af3d87fe86ca46ff"><td class="memItemLeft" align="right" valign="top"><a id="ab208a31083c7b2f2af3d87fe86ca46ff" name="ab208a31083c7b2f2af3d87fe86ca46ff"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>get_bit</b> (psr_bit bit) const</td></tr>
+<tr class="memitem:ab208a31083c7b2f2af3d87fe86ca46ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#ab208a31083c7b2f2af3d87fe86ca46ff">get_bit</a> (psr_bit bit) const</td></tr>
 <tr class="separator:ab208a31083c7b2f2af3d87fe86ca46ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4852938862acac03abafeceb68ee0c9"><td class="memItemLeft" align="right" valign="top"><a id="af4852938862acac03abafeceb68ee0c9" name="af4852938862acac03abafeceb68ee0c9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_bit</b> (psr_bit bit, bool value)</td></tr>
+<tr class="memitem:af4852938862acac03abafeceb68ee0c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#af4852938862acac03abafeceb68ee0c9">set_bit</a> (psr_bit bit, bool value)</td></tr>
 <tr class="separator:af4852938862acac03abafeceb68ee0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab274086e31101129c819f829dcc0729a"><td class="memItemLeft" align="right" valign="top"><a id="ab274086e31101129c819f829dcc0729a" name="ab274086e31101129c819f829dcc0729a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update_bit</b> (psr_bit bit, std::function&lt; bool(bool)&gt; update)</td></tr>
+<tr class="memitem:ab274086e31101129c819f829dcc0729a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#ab274086e31101129c819f829dcc0729a">update_bit</a> (psr_bit bit, std::function&lt; bool(bool)&gt; update)</td></tr>
 <tr class="separator:ab274086e31101129c819f829dcc0729a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac31ff918bfcc4de90260a3c87b70d115"><td class="memItemLeft" align="right" valign="top"><a id="ac31ff918bfcc4de90260a3c87b70d115" name="ac31ff918bfcc4de90260a3c87b70d115"></a>
 std::byte&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> () const</td></tr>
@@ -127,7 +124,106 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (std::byte va
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that represents the processor status register (P) of the CPU. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab208a31083c7b2f2af3d87fe86ca46ff" name="ab208a31083c7b2f2af3d87fe86ca46ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab208a31083c7b2f2af3d87fe86ca46ff">&#9670;&#160;</a></span>get_bit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PSR::get_bit </td>
+          <td>(</td>
+          <td class="paramtype">psr_bit&#160;</td>
+          <td class="paramname"><em>bit</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the value of a bit in the <a class="el" href="classPSR.html">PSR</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bit</td><td>The bit to get. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool Is the bit set? </dd></dl>
+
+</div>
+</div>
+<a id="af4852938862acac03abafeceb68ee0c9" name="af4852938862acac03abafeceb68ee0c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4852938862acac03abafeceb68ee0c9">&#9670;&#160;</a></span>set_bit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PSR::set_bit </td>
+          <td>(</td>
+          <td class="paramtype">psr_bit&#160;</td>
+          <td class="paramname"><em>bit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the value of a bit in the <a class="el" href="classPSR.html">PSR</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bit</td><td>The bit to set. </td></tr>
+    <tr><td class="paramname">value</td><td>The value to set the bit to. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab274086e31101129c819f829dcc0729a" name="ab274086e31101129c819f829dcc0729a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab274086e31101129c819f829dcc0729a">&#9670;&#160;</a></span>update_bit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PSR::update_bit </td>
+          <td>(</td>
+          <td class="paramtype">psr_bit&#160;</td>
+          <td class="paramname"><em>bit</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; bool(bool)&gt;&#160;</td>
+          <td class="paramname"><em>update</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Update the value of a bit in the <a class="el" href="classPSR.html">PSR</a> through a mapper.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bit</td><td>The bit to update. </td></tr>
+    <tr><td class="paramname">update</td><td>The function to update the bit. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="psr_8h_source.html">psr.h</a></li>
 <li>psr.cpp</li>
 </ul>

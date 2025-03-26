@@ -10,7 +10,7 @@ var annotated_dup =
     [ "CPUException", "classCPUException.html", null ],
     [ "Debugger", "classDebugger.html", null ],
     [ "DebuggerOptions", "structDebuggerOptions.html", null ],
-    [ "GP_Memory", "classGP__Memory.html", null ],
-    [ "Instruction", "structInstruction.html", null ],
-    [ "PSR", "classPSR.html", null ]
+    [ "GP_Memory", "classGP__Memory.html", "classGP__Memory" ],
+    [ "Instruction", "structInstruction.html", "structInstruction" ],
+    [ "PSR", "classPSR.html", "classPSR" ]
 ];

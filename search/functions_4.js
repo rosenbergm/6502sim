@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['update_5fflags_0',['update_flags',['../classCPU6502.html#a715b8e9f656286a52751f42e4dbba28b',1,'CPU6502']]]
+  ['byte_0',['byte',['../classaddress.html#a074fbc17d893c3b212a86f08d278b9ba',1,'address']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['step_0',['step',['../classCPU6502.html#a47cca859097af3da244b68c3034b9443',1,'CPU6502']]]
+  ['byte_0',['byte',['../classaddress.html#a074fbc17d893c3b212a86f08d278b9ba',1,'address']]]
 ];
