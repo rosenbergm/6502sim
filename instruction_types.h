@@ -62,9 +62,15 @@ enum class InstructionErr {
 };
 
 struct Instruction {
+
+  /// The name of the instruction specified in the ABI (or datasheet).
   std::string name;
+  /// The addressing mode of the instruction.
   AddressingMode mode;
+  /// The number of bytes the instruction takes up in memory.
   size_t bytes;
+  /// The function to execute the instruction. Accepts the CPU from which it
+  /// gets context from.
   std::function<InstructionErr(CPU6502 &, address)> execute;
 
   Instruction(std::string name_, AddressingMode mode_,

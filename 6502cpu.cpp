@@ -4,7 +4,11 @@
 #include "instruction_types.h"
 #include "psr.h"
 
-/** Sets the ZERO (Z) and NEGATIVE (N) flags according to the value passed */
+/**
+ * Sets the ZERO (Z) and NEGATIVE (N) flags according to the value passed.
+ *
+ * @param value The value to update the flags with.
+ */
 void CPU6502::update_flags(std::byte value) {
   P.set_bit(psr_bit::zero, value == ZERO_BYTE);
   P.set_bit(psr_bit::negative, (value & MS_BIT_MASK) != ZERO_BYTE);
@@ -13,7 +17,9 @@ void CPU6502::update_flags(std::byte value) {
 /**
  * Pop a value from the CPU stack and increment the stack pointer.
  *
- * There are not guarantees the stack pointer will not overflow.
+ * There are no guarantees the stack pointer will not overflow.
+ *
+ * @return Value popped from the stack.
  */
 std::byte CPU6502::pop_stack() {
   std::byte value = memory_->read(address(S));
@@ -27,6 +33,8 @@ std::byte CPU6502::pop_stack() {
  * Pushes a value to the CPU stack and decrements the stack pointer.
  *
  * There are not guarantees the stack pointer will not underflow.
+ *
+ * @param value The value to push to the stack.
  */
 void CPU6502::push_stack(std::byte value) {
   S = (S - 1).value;
@@ -34,7 +42,13 @@ void CPU6502::push_stack(std::byte value) {
   memory_->write(address(S), value);
 }
 
-/** Executes the provided code in memory. */
+/**
+ * @brief Executes the provided code in memory.
+ *
+ * The CPU will execute instructions until it reaches the end of the memory.
+ *
+ * @return When the CPU reaches the end of the memory.
+ */
 void CPU6502::execute() {
   while (PC.inner() < memory_->size()) {
     InstructionErr err = step();
@@ -47,8 +61,12 @@ void CPU6502::execute() {
   }
 }
 
-/** Makes one step of the CPU, equivallent to executing one instruction and
- * advances the program counter. */
+/**
+ * Makes one step of the CPU, equivallent to executing one instruction and
+ * advances the program counter.
+ *
+ * @return InstructionErr The result of the executed instruction.
+ */
 InstructionErr CPU6502::step() {
   std::byte opcode = memory_->read(PC);
 

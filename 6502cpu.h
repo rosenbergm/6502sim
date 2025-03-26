@@ -31,6 +31,7 @@ public:
   const char *message() const { return message_; }
 };
 
+/// Class representing a W65C02S CPU.
 class CPU6502 {
 private:
   // registers
@@ -47,6 +48,13 @@ private:
   bool verbose_ = false;
 
 public:
+  /**
+   * Create a new CPU instance with the provided memory.
+   *
+   * @param memory The memory to use with the CPU.
+   * @param debug Whether to enable debug mode.
+   * @throws CPUException If the memory is null.
+   */
   CPU6502(GP_Memory *memory, bool debug = false)
       : A(), X(), Y(), S(std::byte(STACK_START)), P(), PC(), memory_(memory),
         debug_(debug) {
