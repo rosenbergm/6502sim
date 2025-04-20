@@ -1,4 +1,25 @@
 var searchData=
 [
-  ['write_0',['write',['../classGP__Memory.html#a0cfb3e72b2eaff8bcf34d31bbb52e07a',1,'GP_Memory']]]
+  ['p_0',['P',['../classCPU6502.html#af533b1ba9a6baf395e261506a4d4ac11',1,'CPU6502']]],
+  ['pag_5fexample_1',['pag_example',['../pag_example.html',1,'']]],
+  ['par_2ecpp_2',['par.cpp',['../par_8cpp.html',1,'']]],
+  ['par_5ftest_3',['Par_Test',['../classPar__Test.html',1,'']]],
+  ['parse_4',['parse',['../classCommand_1_1Command.html#a3dbf21522f602b248cbc7eea421dfb9c',1,'Command::Command']]],
+  ['parse_5fname_5',['parse_name',['../namespaceCommand.html#a2411f60c5760436bf7e30a2d44acc56c',1,'Command']]],
+  ['pc_6',['PC',['../classCPU6502.html#af9b99ebbbf6a3a301992067688718826',1,'CPU6502']]],
+  ['pcrelative_7',['PCRelative',['../instruction__types_8h.html#aa5cfff0cd9c5ad5ebda7aeecc4a50c2ba152def5cb8098d16109a31b202418d28',1,'instruction_types.h']]],
+  ['pop_5fstack_8',['pop_stack',['../classCPU6502.html#a6c4da15a308954811145aef4b29ef990',1,'CPU6502']]],
+  ['print_2einc_9',['print.inc',['../print_8inc.html',1,'']]],
+  ['print_5fdevice_5faddr_10',['print_device_addr',['../classGP__Memory.html#a7d42c028e042a5d9d022c731b59e023c',1,'GP_Memory']]],
+  ['print_5fdevice_5faddr_5f_11',['print_device_addr_',['../classGP__Memory.html#a6740d7913a9184026e8d62b09a1797c0',1,'GP_Memory']]],
+  ['print_5fmemory_12',['print_memory',['../classDebugger.html#a0c1505f74dc7245b84e817fefab349f0',1,'Debugger']]],
+  ['prompt_13',['PROMPT',['../debugger_8h.html#acb933c895b0fba41e8f6bd58b0d5eedb',1,'debugger.h']]],
+  ['psr_14',['PSR',['../classPSR.html#ae47a8083f8b3257e6b1edd2bdc9294fc',1,'PSR::PSR()'],['../classPSR.html#afaa3bc84c7743c26c27968b8faa43fd0',1,'PSR::PSR(std::byte psr)'],['../classPSR.html',1,'PSR']]],
+  ['psr_2ecpp_15',['psr.cpp',['../psr_8cpp.html',1,'']]],
+  ['psr_2eh_16',['psr.h',['../psr_8h.html',1,'']]],
+  ['psr_5f_17',['psr_',['../classPSR.html#adf518adc7cf2f7cf6c6c5c86f50a1a08',1,'PSR']]],
+  ['psr_5fbit_18',['psr_bit',['../psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56',1,'psr.h']]],
+  ['psr_5finitial_5fvalue_19',['PSR_INITIAL_VALUE',['../psr_8h.html#ae9c2fa19d37461fb50e7209bcea30b99',1,'psr.h']]],
+  ['publicvar_20',['publicVar',['../classJavadoc__Test.html#a44a516fbc3a4865e2dcae34649c9df6a',1,'Javadoc_Test::publicVar()'],['../classQTstyle__Test.html#aabf7b2e9ed83ea44aca4d213baae06d3',1,'QTstyle_Test::publicVar()']]],
+  ['push_5fstack_21',['push_stack',['../classCPU6502.html#a9fa5f617a18acf50c76c58dd7443abbe',1,'CPU6502']]]
 ];

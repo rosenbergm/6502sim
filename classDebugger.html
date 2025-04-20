@@ -30,8 +30,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">6502SIM
+   <div id="projectname">6502SIM<span id="projectnumber">&#160;1.0.0</span>
    </div>
+   <div id="projectbrief">A minimal 6502 (W65C02S) processor simulator</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -97,32 +98,324 @@ $(document).ready(function(){initNavTree('classDebugger.html',''); initResizable
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classDebugger-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Debugger Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="debugger_8h_source.html">debugger.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for Debugger:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classDebugger__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2ca9423192b13baafbb65e84f93001be"><td class="memItemLeft" align="right" valign="top"><a id="a2ca9423192b13baafbb65e84f93001be" name="a2ca9423192b13baafbb65e84f93001be"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Debugger</b> (<a class="el" href="classCPU6502.html">CPU6502</a> *cpu)</td></tr>
+<tr class="memitem:a2ca9423192b13baafbb65e84f93001be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDebugger.html#a2ca9423192b13baafbb65e84f93001be">Debugger</a> (<a class="el" href="classCPU6502.html">CPU6502</a> *cpu)</td></tr>
 <tr class="separator:a2ca9423192b13baafbb65e84f93001be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a946013a99ffe10f2f6035ba3e3855a20"><td class="memItemLeft" align="right" valign="top"><a id="a946013a99ffe10f2f6035ba3e3855a20" name="a946013a99ffe10f2f6035ba3e3855a20"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Debugger</b> (<a class="el" href="classCPU6502.html">CPU6502</a> *cpu, <a class="el" href="structDebuggerOptions.html">DebuggerOptions</a> &amp;&amp;options)</td></tr>
+<tr class="memitem:a946013a99ffe10f2f6035ba3e3855a20"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDebugger.html#a946013a99ffe10f2f6035ba3e3855a20">Debugger</a> (<a class="el" href="classCPU6502.html">CPU6502</a> *cpu, <a class="el" href="structDebuggerOptions.html">DebuggerOptions</a> &amp;&amp;options)</td></tr>
 <tr class="separator:a946013a99ffe10f2f6035ba3e3855a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c1505f74dc7245b84e817fefab349f0"><td class="memItemLeft" align="right" valign="top"><a id="a0c1505f74dc7245b84e817fefab349f0" name="a0c1505f74dc7245b84e817fefab349f0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>print_memory</b> (std::ostream &amp;stream, <a class="el" href="classGP__Memory.html">GP_Memory</a> *memory, size_t start, size_t count)</td></tr>
+<tr class="memitem:a0c1505f74dc7245b84e817fefab349f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDebugger.html#a0c1505f74dc7245b84e817fefab349f0">print_memory</a> (std::ostream &amp;stream, <a class="el" href="classGP__Memory.html">GP_Memory</a> *memory, size_t start, size_t count)</td></tr>
 <tr class="separator:a0c1505f74dc7245b84e817fefab349f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b1c8e66cc7d4ea8c55f0adf02cd5494"><td class="memItemLeft" align="right" valign="top"><a id="a1b1c8e66cc7d4ea8c55f0adf02cd5494" name="a1b1c8e66cc7d4ea8c55f0adf02cd5494"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>go_to_debugger</b> ()</td></tr>
+<tr class="memitem:a1b1c8e66cc7d4ea8c55f0adf02cd5494"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDebugger.html#a1b1c8e66cc7d4ea8c55f0adf02cd5494">go_to_debugger</a> ()</td></tr>
 <tr class="separator:a1b1c8e66cc7d4ea8c55f0adf02cd5494"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1df28a43e7686d9aa06714fc8b534072"><td class="memItemLeft" align="right" valign="top"><a id="a1df28a43e7686d9aa06714fc8b534072" name="a1df28a43e7686d9aa06714fc8b534072"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
+<tr class="memitem:a1df28a43e7686d9aa06714fc8b534072"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDebugger.html#a1df28a43e7686d9aa06714fc8b534072">run</a> ()</td></tr>
 <tr class="separator:a1df28a43e7686d9aa06714fc8b534072"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:af5db2b7d529378ea1aa269785964c266"><td class="memItemLeft" align="right" valign="top">int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDebugger.html#af5db2b7d529378ea1aa269785964c266">twos_complement</a> (uint8_t byte)</td></tr>
+<tr class="separator:af5db2b7d529378ea1aa269785964c266"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a565c7325b7b58e5790aef82e59c06ee4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classCPU6502.html">CPU6502</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDebugger.html#a565c7325b7b58e5790aef82e59c06ee4">cpu_</a></td></tr>
+<tr class="separator:a565c7325b7b58e5790aef82e59c06ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeec47b5a402a982717d8196fd218b15b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structDebuggerOptions.html">DebuggerOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDebugger.html#aeec47b5a402a982717d8196fd218b15b">options_</a></td></tr>
+<tr class="separator:aeec47b5a402a982717d8196fd218b15b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a2ca9423192b13baafbb65e84f93001be" name="a2ca9423192b13baafbb65e84f93001be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ca9423192b13baafbb65e84f93001be">&#9670;&#160;</a></span>Debugger() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Debugger::Debugger </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCPU6502.html">CPU6502</a> *&#160;</td>
+          <td class="paramname"><em>cpu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a946013a99ffe10f2f6035ba3e3855a20" name="a946013a99ffe10f2f6035ba3e3855a20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a946013a99ffe10f2f6035ba3e3855a20">&#9670;&#160;</a></span>Debugger() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Debugger::Debugger </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCPU6502.html">CPU6502</a> *&#160;</td>
+          <td class="paramname"><em>cpu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structDebuggerOptions.html">DebuggerOptions</a> &amp;&amp;&#160;</td>
+          <td class="paramname"><em>options</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1b1c8e66cc7d4ea8c55f0adf02cd5494" name="a1b1c8e66cc7d4ea8c55f0adf02cd5494"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b1c8e66cc7d4ea8c55f0adf02cd5494">&#9670;&#160;</a></span>go_to_debugger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Debugger::go_to_debugger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classDebugger_a1b1c8e66cc7d4ea8c55f0adf02cd5494_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDebugger_a1b1c8e66cc7d4ea8c55f0adf02cd5494_icgraph.svg" width="474" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a0c1505f74dc7245b84e817fefab349f0" name="a0c1505f74dc7245b84e817fefab349f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c1505f74dc7245b84e817fefab349f0">&#9670;&#160;</a></span>print_memory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Debugger::print_memory </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classGP__Memory.html">GP_Memory</a> *&#160;</td>
+          <td class="paramname"><em>memory</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDebugger_a0c1505f74dc7245b84e817fefab349f0_cgraph.svg" width="382" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classDebugger_a0c1505f74dc7245b84e817fefab349f0_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a1df28a43e7686d9aa06714fc8b534072" name="a1df28a43e7686d9aa06714fc8b534072"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1df28a43e7686d9aa06714fc8b534072">&#9670;&#160;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Debugger::run </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classDebugger_a1df28a43e7686d9aa06714fc8b534072_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classDebugger_a1df28a43e7686d9aa06714fc8b534072_icgraph.svg" width="228" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="af5db2b7d529378ea1aa269785964c266" name="af5db2b7d529378ea1aa269785964c266"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5db2b7d529378ea1aa269785964c266">&#9670;&#160;</a></span>twos_complement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int16_t Debugger::twos_complement </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>byte</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classDebugger_af5db2b7d529378ea1aa269785964c266_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a565c7325b7b58e5790aef82e59c06ee4" name="a565c7325b7b58e5790aef82e59c06ee4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a565c7325b7b58e5790aef82e59c06ee4">&#9670;&#160;</a></span>cpu_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classCPU6502.html">CPU6502</a>* Debugger::cpu_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeec47b5a402a982717d8196fd218b15b" name="aeec47b5a402a982717d8196fd218b15b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeec47b5a402a982717d8196fd218b15b">&#9670;&#160;</a></span>options_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structDebuggerOptions.html">DebuggerOptions</a> Debugger::options_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="debugger_8h_source.html">debugger.h</a></li>
-<li>debugger.cpp</li>
+<li><a class="el" href="debugger_8cpp.html">debugger.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

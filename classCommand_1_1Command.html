@@ -30,8 +30,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">6502SIM
+   <div id="projectname">6502SIM<span id="projectnumber">&#160;1.0.0</span>
    </div>
+   <div id="projectbrief">A minimal 6502 (W65C02S) processor simulator</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -102,22 +103,101 @@ $(document).ready(function(){initNavTree('classCommand_1_1Command.html',''); ini
   <div class="headertitle"><div class="title">Command::Command Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="debugger_8h_source.html">debugger.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for Command::Command:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classCommand_1_1Command__coll__graph.svg" width="175" height="103"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a3dbf21522f602b248cbc7eea421dfb9c"><td class="memItemLeft" align="right" valign="top"><a id="a3dbf21522f602b248cbc7eea421dfb9c" name="a3dbf21522f602b248cbc7eea421dfb9c"></a>
-static std::optional&lt; <a class="el" href="classCommand_1_1Command.html">Command</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>parse</b> (const std::string &amp;command)</td></tr>
+<tr class="memitem:a3dbf21522f602b248cbc7eea421dfb9c"><td class="memItemLeft" align="right" valign="top">static std::optional&lt; <a class="el" href="classCommand_1_1Command.html">Command</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommand_1_1Command.html#a3dbf21522f602b248cbc7eea421dfb9c">parse</a> (const std::string &amp;command)</td></tr>
 <tr class="separator:a3dbf21522f602b248cbc7eea421dfb9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a49909ed1690a58ae8d8d454cf8b863a0"><td class="memItemLeft" align="right" valign="top"><a id="a49909ed1690a58ae8d8d454cf8b863a0" name="a49909ed1690a58ae8d8d454cf8b863a0"></a>
-Name&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="memitem:a49909ed1690a58ae8d8d454cf8b863a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceCommand.html#afba466752cc4b448ad04d55638f0650a">Name</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommand_1_1Command.html#a49909ed1690a58ae8d8d454cf8b863a0">name</a></td></tr>
 <tr class="separator:a49909ed1690a58ae8d8d454cf8b863a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44e16f07c6736f39057763eb523b06c6"><td class="memItemLeft" align="right" valign="top"><a id="a44e16f07c6736f39057763eb523b06c6" name="a44e16f07c6736f39057763eb523b06c6"></a>
-std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>args</b></td></tr>
+<tr class="memitem:a44e16f07c6736f39057763eb523b06c6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCommand_1_1Command.html#a44e16f07c6736f39057763eb523b06c6">args</a></td></tr>
 <tr class="separator:a44e16f07c6736f39057763eb523b06c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3dbf21522f602b248cbc7eea421dfb9c" name="a3dbf21522f602b248cbc7eea421dfb9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dbf21522f602b248cbc7eea421dfb9c">&#9670;&#160;</a></span>parse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::optional&lt; <a class="el" href="classCommand_1_1Command.html">Command</a> &gt; Command::Command::parse </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>command</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classCommand_1_1Command_a3dbf21522f602b248cbc7eea421dfb9c_cgraph.svg" width="444" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classCommand_1_1Command_a3dbf21522f602b248cbc7eea421dfb9c_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a44e16f07c6736f39057763eb523b06c6" name="a44e16f07c6736f39057763eb523b06c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44e16f07c6736f39057763eb523b06c6">&#9670;&#160;</a></span>args</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; Command::Command::args</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a49909ed1690a58ae8d8d454cf8b863a0" name="a49909ed1690a58ae8d8d454cf8b863a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49909ed1690a58ae8d8d454cf8b863a0">&#9670;&#160;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceCommand.html#afba466752cc4b448ad04d55638f0650a">Name</a> Command::Command::name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="debugger_8h_source.html">debugger.h</a></li>
 </ul>
@@ -126,7 +206,7 @@ std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bott
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>Command</b></li><li class="navelem"><a class="el" href="classCommand_1_1Command.html">Command</a></li>
+    <li class="navelem"><a class="el" href="namespaceCommand.html">Command</a></li><li class="navelem"><a class="el" href="classCommand_1_1Command.html">Command</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

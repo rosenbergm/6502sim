@@ -30,8 +30,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">6502SIM
+   <div id="projectname">6502SIM<span id="projectnumber">&#160;1.0.0</span>
    </div>
+   <div id="projectbrief">A minimal 6502 (W65C02S) processor simulator</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -97,15 +98,26 @@ $(document).ready(function(){initNavTree('classGP__Memory.html',''); initResizab
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classGP__Memory-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">GP_Memory Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="gp__memory_8h_source.html">gp_memory.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for GP_Memory:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGP__Memory__coll__graph.svg" width="231" height="492"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a99467187cc41d4ecd3705aa3ff201091"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGP__Memory.html#a99467187cc41d4ecd3705aa3ff201091">GP_Memory</a> ()</td></tr>
+<tr class="separator:a99467187cc41d4ecd3705aa3ff201091"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03b719e4f636ba1520ca31df1af651ce"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGP__Memory.html#a03b719e4f636ba1520ca31df1af651ce">size</a> () const</td></tr>
 <tr class="separator:a03b719e4f636ba1520ca31df1af651ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a137b4c481288e6f2eb5de177f7a7fcb0"><td class="memItemLeft" align="right" valign="top">std::byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGP__Memory.html#a137b4c481288e6f2eb5de177f7a7fcb0">read</a> (<a class="el" href="classaddress.html">address</a> <a class="el" href="classaddress.html">address</a>) const</td></tr>
@@ -118,16 +130,47 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab0f934ae0e78d117d05493aa3f476e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab15b7c8aef42efdb1b630d01b8307be8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGP__Memory.html#ab15b7c8aef42efdb1b630d01b8307be8">import</a> (const std::string &amp;filename)</td></tr>
 <tr class="separator:ab15b7c8aef42efdb1b630d01b8307be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83c0a0e6429f44f52b5a00a58ada113b"><td class="memItemLeft" align="right" valign="top"><a id="a83c0a0e6429f44f52b5a00a58ada113b" name="a83c0a0e6429f44f52b5a00a58ada113b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_print_device</b> (<a class="el" href="classaddress.html">address</a> addr)</td></tr>
+<tr class="memitem:a83c0a0e6429f44f52b5a00a58ada113b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGP__Memory.html#a83c0a0e6429f44f52b5a00a58ada113b">set_print_device</a> (<a class="el" href="classaddress.html">address</a> addr)</td></tr>
 <tr class="separator:a83c0a0e6429f44f52b5a00a58ada113b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d42c028e042a5d9d022c731b59e023c"><td class="memItemLeft" align="right" valign="top"><a id="a7d42c028e042a5d9d022c731b59e023c" name="a7d42c028e042a5d9d022c731b59e023c"></a>
-<a class="el" href="classaddress.html">address</a>&#160;</td><td class="memItemRight" valign="bottom"><b>print_device_addr</b> () const</td></tr>
+<tr class="memitem:a7d42c028e042a5d9d022c731b59e023c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaddress.html">address</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGP__Memory.html#a7d42c028e042a5d9d022c731b59e023c">print_device_addr</a> () const</td></tr>
 <tr class="separator:a7d42c028e042a5d9d022c731b59e023c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aafa703359f4e1046913993c70f8ef00e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::byte &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGP__Memory.html#aafa703359f4e1046913993c70f8ef00e">memory_</a></td></tr>
+<tr class="separator:aafa703359f4e1046913993c70f8ef00e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6740d7913a9184026e8d62b09a1797c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classaddress.html">address</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGP__Memory.html#a6740d7913a9184026e8d62b09a1797c0">print_device_addr_</a></td></tr>
+<tr class="separator:a6740d7913a9184026e8d62b09a1797c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that represents general purpose random access memory that could be used by the emulated CPU. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a99467187cc41d4ecd3705aa3ff201091" name="a99467187cc41d4ecd3705aa3ff201091"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99467187cc41d4ecd3705aa3ff201091">&#9670;&#160;</a></span>GP_Memory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GP_Memory::GP_Memory </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab15b7c8aef42efdb1b630d01b8307be8" name="ab15b7c8aef42efdb1b630d01b8307be8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab15b7c8aef42efdb1b630d01b8307be8">&#9670;&#160;</a></span>import() <span class="overload">[1/2]</span></h2>
 
@@ -181,6 +224,39 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_print_device</b> 
   </table>
   </dd>
 </dl>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGP__Memory_ab0f934ae0e78d117d05493aa3f476e41_icgraph.svg" width="264" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a7d42c028e042a5d9d022c731b59e023c" name="a7d42c028e042a5d9d022c731b59e023c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d42c028e042a5d9d022c731b59e023c">&#9670;&#160;</a></span>print_device_addr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classaddress.html">address</a> GP_Memory::print_device_addr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -213,6 +289,22 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_print_device</b> 
   </table>
   </dd>
 </dl>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGP__Memory_a137b4c481288e6f2eb5de177f7a7fcb0_cgraph.svg" width="148" height="60"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classGP__Memory_a137b4c481288e6f2eb5de177f7a7fcb0_icgraph.svg" width="100%" height="476"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -248,6 +340,40 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_print_device</b> 
 
 </div>
 </div>
+<a id="a83c0a0e6429f44f52b5a00a58ada113b" name="a83c0a0e6429f44f52b5a00a58ada113b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83c0a0e6429f44f52b5a00a58ada113b">&#9670;&#160;</a></span>set_print_device()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GP_Memory::set_print_device </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classaddress.html">address</a>&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGP__Memory_a83c0a0e6429f44f52b5a00a58ada113b_icgraph.svg" width="279" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <a id="a03b719e4f636ba1520ca31df1af651ce" name="a03b719e4f636ba1520ca31df1af651ce"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a03b719e4f636ba1520ca31df1af651ce">&#9670;&#160;</a></span>size()</h2>
 
@@ -263,6 +389,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_print_device</b> 
       </table>
 </div><div class="memdoc">
 <p>Get current size of the memory. </p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGP__Memory_a03b719e4f636ba1520ca31df1af651ce_icgraph.svg" width="444" height="135"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -299,12 +433,65 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_print_device</b> 
   </table>
   </dd>
 </dl>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGP__Memory_a0cfb3e72b2eaff8bcf34d31bbb52e07a_icgraph.svg" width="363" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aafa703359f4e1046913993c70f8ef00e" name="aafa703359f4e1046913993c70f8ef00e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafa703359f4e1046913993c70f8ef00e">&#9670;&#160;</a></span>memory_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::byte&gt; GP_Memory::memory_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6740d7913a9184026e8d62b09a1797c0" name="a6740d7913a9184026e8d62b09a1797c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6740d7913a9184026e8d62b09a1797c0">&#9670;&#160;</a></span>print_device_addr_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classaddress.html">address</a> GP_Memory::print_device_addr_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="gp__memory_8h_source.html">gp_memory.h</a></li>
-<li>gp_memory.cpp</li>
+<li><a class="el" href="gp__memory_8cpp.html">gp_memory.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['pop_5fstack_0',['pop_stack',['../classCPU6502.html#a6c4da15a308954811145aef4b29ef990',1,'CPU6502']]],
-  ['psr_1',['PSR',['../classPSR.html',1,'']]],
-  ['push_5fstack_2',['push_stack',['../classCPU6502.html#a9fa5f617a18acf50c76c58dd7443abbe',1,'CPU6502']]]
+  ['low_0',['low',['../classaddress.html#a4d1d7431ef40deb92e882595ec23b48f',1,'address']]],
+  ['ls_5fbit_5fmask_1',['LS_BIT_MASK',['../6502cpu_8h.html#a73d5f85fa6af12a784f5db40cfad9aad',1,'6502cpu.h']]]
 ];

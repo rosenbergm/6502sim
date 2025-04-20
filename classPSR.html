@@ -30,8 +30,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">6502SIM
+   <div id="projectname">6502SIM<span id="projectnumber">&#160;1.0.0</span>
    </div>
+   <div id="projectbrief">A minimal 6502 (W65C02S) processor simulator</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -97,34 +98,124 @@ $(document).ready(function(){initNavTree('classPSR.html',''); initResizable(); }
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classPSR-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">PSR Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="psr_8h_source.html">psr.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for PSR:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPSR__coll__graph.svg" width="127" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afaa3bc84c7743c26c27968b8faa43fd0"><td class="memItemLeft" align="right" valign="top"><a id="afaa3bc84c7743c26c27968b8faa43fd0" name="afaa3bc84c7743c26c27968b8faa43fd0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PSR</b> (std::byte psr)</td></tr>
+<tr class="memitem:ae47a8083f8b3257e6b1edd2bdc9294fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#ae47a8083f8b3257e6b1edd2bdc9294fc">PSR</a> ()</td></tr>
+<tr class="separator:ae47a8083f8b3257e6b1edd2bdc9294fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaa3bc84c7743c26c27968b8faa43fd0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#afaa3bc84c7743c26c27968b8faa43fd0">PSR</a> (std::byte psr)</td></tr>
 <tr class="separator:afaa3bc84c7743c26c27968b8faa43fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab208a31083c7b2f2af3d87fe86ca46ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#ab208a31083c7b2f2af3d87fe86ca46ff">get_bit</a> (psr_bit bit) const</td></tr>
+<tr class="memitem:ab208a31083c7b2f2af3d87fe86ca46ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#ab208a31083c7b2f2af3d87fe86ca46ff">get_bit</a> (<a class="el" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56">psr_bit</a> bit) const</td></tr>
 <tr class="separator:ab208a31083c7b2f2af3d87fe86ca46ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4852938862acac03abafeceb68ee0c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#af4852938862acac03abafeceb68ee0c9">set_bit</a> (psr_bit bit, bool value)</td></tr>
+<tr class="memitem:af4852938862acac03abafeceb68ee0c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#af4852938862acac03abafeceb68ee0c9">set_bit</a> (<a class="el" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56">psr_bit</a> bit, bool value)</td></tr>
 <tr class="separator:af4852938862acac03abafeceb68ee0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab274086e31101129c819f829dcc0729a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#ab274086e31101129c819f829dcc0729a">update_bit</a> (psr_bit bit, std::function&lt; bool(bool)&gt; update)</td></tr>
+<tr class="memitem:ab274086e31101129c819f829dcc0729a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#ab274086e31101129c819f829dcc0729a">update_bit</a> (<a class="el" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56">psr_bit</a> bit, std::function&lt; bool(bool)&gt; update)</td></tr>
 <tr class="separator:ab274086e31101129c819f829dcc0729a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac31ff918bfcc4de90260a3c87b70d115"><td class="memItemLeft" align="right" valign="top"><a id="ac31ff918bfcc4de90260a3c87b70d115" name="ac31ff918bfcc4de90260a3c87b70d115"></a>
-std::byte&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> () const</td></tr>
+<tr class="memitem:ac31ff918bfcc4de90260a3c87b70d115"><td class="memItemLeft" align="right" valign="top">std::byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#ac31ff918bfcc4de90260a3c87b70d115">get</a> () const</td></tr>
 <tr class="separator:ac31ff918bfcc4de90260a3c87b70d115"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae680d04a483e1e79b0b037938ed61a77"><td class="memItemLeft" align="right" valign="top"><a id="ae680d04a483e1e79b0b037938ed61a77" name="ae680d04a483e1e79b0b037938ed61a77"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (std::byte value)</td></tr>
+<tr class="memitem:ae680d04a483e1e79b0b037938ed61a77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#ae680d04a483e1e79b0b037938ed61a77">set</a> (std::byte value)</td></tr>
 <tr class="separator:ae680d04a483e1e79b0b037938ed61a77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:adf518adc7cf2f7cf6c6c5c86f50a1a08"><td class="memItemLeft" align="right" valign="top">std::byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPSR.html#adf518adc7cf2f7cf6c6c5c86f50a1a08">psr_</a></td></tr>
+<tr class="separator:adf518adc7cf2f7cf6c6c5c86f50a1a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that represents the processor status register (P) of the CPU. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae47a8083f8b3257e6b1edd2bdc9294fc" name="ae47a8083f8b3257e6b1edd2bdc9294fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae47a8083f8b3257e6b1edd2bdc9294fc">&#9670;&#160;</a></span>PSR() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PSR::PSR </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afaa3bc84c7743c26c27968b8faa43fd0" name="afaa3bc84c7743c26c27968b8faa43fd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaa3bc84c7743c26c27968b8faa43fd0">&#9670;&#160;</a></span>PSR() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PSR::PSR </td>
+          <td>(</td>
+          <td class="paramtype">std::byte&#160;</td>
+          <td class="paramname"><em>psr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac31ff918bfcc4de90260a3c87b70d115" name="ac31ff918bfcc4de90260a3c87b70d115"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac31ff918bfcc4de90260a3c87b70d115">&#9670;&#160;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::byte PSR::get </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPSR_ac31ff918bfcc4de90260a3c87b70d115_icgraph.svg" width="598" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <a id="ab208a31083c7b2f2af3d87fe86ca46ff" name="ab208a31083c7b2f2af3d87fe86ca46ff"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab208a31083c7b2f2af3d87fe86ca46ff">&#9670;&#160;</a></span>get_bit()</h2>
 
@@ -134,7 +225,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (std::byte va
         <tr>
           <td class="memname">bool PSR::get_bit </td>
           <td>(</td>
-          <td class="paramtype">psr_bit&#160;</td>
+          <td class="paramtype"><a class="el" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56">psr_bit</a>&#160;</td>
           <td class="paramname"><em>bit</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -148,6 +239,32 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (std::byte va
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>bool Is the bit set? </dd></dl>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPSR_ab208a31083c7b2f2af3d87fe86ca46ff_icgraph.svg" width="283" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ae680d04a483e1e79b0b037938ed61a77" name="ae680d04a483e1e79b0b037938ed61a77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae680d04a483e1e79b0b037938ed61a77">&#9670;&#160;</a></span>set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PSR::set </td>
+          <td>(</td>
+          <td class="paramtype">std::byte&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -160,7 +277,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (std::byte va
         <tr>
           <td class="memname">void PSR::set_bit </td>
           <td>(</td>
-          <td class="paramtype">psr_bit&#160;</td>
+          <td class="paramtype"><a class="el" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56">psr_bit</a>&#160;</td>
           <td class="paramname"><em>bit</em>, </td>
         </tr>
         <tr>
@@ -184,6 +301,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (std::byte va
   </table>
   </dd>
 </dl>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPSR_af4852938862acac03abafeceb68ee0c9_icgraph.svg" width="330" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -196,7 +321,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (std::byte va
         <tr>
           <td class="memname">void PSR::update_bit </td>
           <td>(</td>
-          <td class="paramtype">psr_bit&#160;</td>
+          <td class="paramtype"><a class="el" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56">psr_bit</a>&#160;</td>
           <td class="paramname"><em>bit</em>, </td>
         </tr>
         <tr>
@@ -220,12 +345,43 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (std::byte va
   </table>
   </dd>
 </dl>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classPSR_ab274086e31101129c819f829dcc0729a_cgraph.svg" width="283" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="adf518adc7cf2f7cf6c6c5c86f50a1a08" name="adf518adc7cf2f7cf6c6c5c86f50a1a08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf518adc7cf2f7cf6c6c5c86f50a1a08">&#9670;&#160;</a></span>psr_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::byte PSR::psr_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="psr_8h_source.html">psr.h</a></li>
-<li>psr.cpp</li>
+<li><a class="el" href="psr_8cpp.html">psr.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

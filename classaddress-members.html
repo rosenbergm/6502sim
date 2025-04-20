@@ -30,8 +30,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">6502SIM
+   <div id="projectname">6502SIM<span id="projectnumber">&#160;1.0.0</span>
    </div>
+   <div id="projectbrief">A minimal 6502 (W65C02S) processor simulator</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -101,17 +102,18 @@ $(document).ready(function(){initNavTree('classaddress.html',''); initResizable(
 
 <p>This is the complete list of members for <a class="el" href="classaddress.html">address</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>address</b>() noexcept=default (defined in <a class="el" href="classaddress.html">address</a>)</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>address</b>(const address &amp;) noexcept=default (defined in <a class="el" href="classaddress.html">address</a>)</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>address</b>(std::byte low, std::byte high) noexcept (defined in <a class="el" href="classaddress.html">address</a>)</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>address</b>(IntegerType value) noexcept (defined in <a class="el" href="classaddress.html">address</a>)</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">explicit</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>address</b>(std::byte value) noexcept (defined in <a class="el" href="classaddress.html">address</a>)</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">explicit</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>high</b>() const noexcept (defined in <a class="el" href="classaddress.html">address</a>)</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>inner</b>() const noexcept (defined in <a class="el" href="classaddress.html">address</a>)</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>is_carry</b>(const uint32_t a) noexcept (defined in <a class="el" href="classaddress.html">address</a>)</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">static</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>low</b>() const noexcept (defined in <a class="el" href="classaddress.html">address</a>)</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classaddress.html#a39a81b44eef1f6c627b1ee4adb1e4d05">address</a>() noexcept=default</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classaddress.html#ae69d0998ebcc1955badfcc36c2955c53">address</a>(const address &amp;) noexcept=default</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classaddress.html#af1de2e6b84477d8b8191d8c709cbf8d8">address</a>(std::byte low, std::byte high) noexcept</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classaddress.html#aa10e49c89033c28f4f060b1a72761e71">address</a>(IntegerType value) noexcept</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">explicit</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classaddress.html#a17eef05bea924818360d097a7ee3ebbe">address</a>(std::byte value) noexcept</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">explicit</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classaddress.html#a04026d672a5504049c540d4cf768536b">high</a>() const noexcept</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classaddress.html#add0092eb4577fdc3ec396a0fdf276b30">inner</a>() const noexcept</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classaddress.html#ab0a6459dc15ef5e71bc4ab5d8885ae93">is_carry</a>(const uint32_t a) noexcept</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">static</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classaddress.html#a4d1d7431ef40deb92e882595ec23b48f">low</a>() const noexcept</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classaddress.html#a074fbc17d893c3b212a86f08d278b9ba">operator std::byte</a>() const noexcept</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">explicit</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator std::size_t</b>() const noexcept (defined in <a class="el" href="classaddress.html">address</a>)</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">explicit</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classaddress.html#aa192ebe203ee5dee5fa79145cecf44fb">operator std::size_t</a>() const noexcept</td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">explicit</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classaddress.html#ae16c7309ba6562abd01cfe339fec475b">value_</a></td><td class="entry"><a class="el" href="classaddress.html">address</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -1,5 +1,10 @@
 var searchData=
 [
-  ['pop_5fstack_0',['pop_stack',['../classCPU6502.html#a6c4da15a308954811145aef4b29ef990',1,'CPU6502']]],
-  ['push_5fstack_1',['push_stack',['../classCPU6502.html#a9fa5f617a18acf50c76c58dd7443abbe',1,'CPU6502']]]
+  ['func_0',['func',['../group__group1.html#ga24f647174760cac13d2624b5ad74b00c',1,'group.cpp']]],
+  ['func1ingroup1_1',['func1InGroup1',['../classMemgrp__Test.html#a5052066c03efb51395b5334da4255cd2',1,'Memgrp_Test']]],
+  ['func1ingroup2_2',['func1InGroup2',['../classMemgrp__Test.html#ab0e6553ddc36ac3cef0ac229c5dd4cdb',1,'Memgrp_Test']]],
+  ['func2_3',['func2',['../group__group1.html#ga053929c0809a5f56f7548fd7d9968f31',1,'group.cpp']]],
+  ['func2ingroup1_4',['func2InGroup1',['../classMemgrp__Test.html#a8296fa2c355e84ecf25522d54807548c',1,'Memgrp_Test']]],
+  ['func2ingroup2_5',['func2InGroup2',['../classMemgrp__Test.html#a9ce862049bb543596343e81ad3ddddff',1,'Memgrp_Test']]],
+  ['func3_6',['func3',['../group__group1.html#gadbf675591ff057ec48ce35b0d5cdf755',1,'group.cpp']]]
 ];

@@ -30,8 +30,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">6502SIM
+   <div id="projectname">6502SIM<span id="projectnumber">&#160;1.0.0</span>
    </div>
+   <div id="projectbrief">A minimal 6502 (W65C02S) processor simulator</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -98,52 +99,67 @@ $(document).ready(function(){initNavTree('psr_8h_source.html',''); initResizable
   <div class="headertitle"><div class="title">psr.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PSR_H</span></div>
+<a href="psr_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PSR_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define PSR_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;functional&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">constexpr</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> PSR_INITIAL_VALUE = 0b00100100;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="psr_8h.html#ae9c2fa19d37461fb50e7209bcea30b99">   13</a></span><span class="keyword">constexpr</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="psr_8h.html#ae9c2fa19d37461fb50e7209bcea30b99">PSR_INITIAL_VALUE</a> = 0b00100100;</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">enum class</span> psr_bit {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  carry, <span class="comment">// lsb</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  zero,</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  interrupt_disable,</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  decimal_mode,</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  break_command,</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  unused,</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  overflow,</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  negative <span class="comment">// msb</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56">   20</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56">psr_bit</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <a class="code hl_enumvalue" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56af9c05403344bba5b3993d54797b56820">carry</a>, <span class="comment">// lsb</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <a class="code hl_enumvalue" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56ad02c4c4cde7ae76252540d116a40f23a">zero</a>,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <a class="code hl_enumvalue" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56a8286f646d8be0b6fe7c599b37b0a1b7c">interrupt_disable</a>,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <a class="code hl_enumvalue" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56a2e37d1762e6c6b33cf24299d02544316">decimal_mode</a>,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <a class="code hl_enumvalue" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56afa3c1fcd8fd0a76c837901a8dead4b19">break_command</a>,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <a class="code hl_enumvalue" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56afd94c6a26d6b6571e8d9398446227ae8">unused</a>,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <a class="code hl_enumvalue" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56a0bd9f6dd716003f3818d15d2e211ee73">overflow</a>,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <a class="code hl_enumvalue" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56a228d6a97a9838dc800e58b3c74ba7b11">negative</a> <span class="comment">// msb</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classPSR.html">   34</a></span><span class="keyword">class </span><a class="code hl_class" href="classPSR.html">PSR</a> {</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  std::byte psr_;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classPSR.html#adf518adc7cf2f7cf6c6c5c86f50a1a08">   36</a></span>  std::byte <a class="code hl_variable" href="classPSR.html#adf518adc7cf2f7cf6c6c5c86f50a1a08">psr_</a>;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>  <a class="code hl_class" href="classPSR.html">PSR</a>() : psr_(std::byte(PSR_INITIAL_VALUE)) {}</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  <a class="code hl_class" href="classPSR.html">PSR</a>(std::byte psr) : psr_(psr) {}</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classPSR.html#ae47a8083f8b3257e6b1edd2bdc9294fc">   39</a></span>  <a class="code hl_function" href="classPSR.html#ae47a8083f8b3257e6b1edd2bdc9294fc">PSR</a>() : <a class="code hl_variable" href="classPSR.html#adf518adc7cf2f7cf6c6c5c86f50a1a08">psr_</a>(std::byte(<a class="code hl_variable" href="psr_8h.html#ae9c2fa19d37461fb50e7209bcea30b99">PSR_INITIAL_VALUE</a>)) {}</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classPSR.html#afaa3bc84c7743c26c27968b8faa43fd0">   40</a></span>  <a class="code hl_function" href="classPSR.html#afaa3bc84c7743c26c27968b8faa43fd0">PSR</a>(std::byte psr) : <a class="code hl_variable" href="classPSR.html#adf518adc7cf2f7cf6c6c5c86f50a1a08">psr_</a>(psr) {}</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classPSR.html#ab208a31083c7b2f2af3d87fe86ca46ff">get_bit</a>(psr_bit bit) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPSR.html#af4852938862acac03abafeceb68ee0c9">set_bit</a>(psr_bit bit, <span class="keywordtype">bool</span> value);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPSR.html#ab274086e31101129c819f829dcc0729a">update_bit</a>(psr_bit bit, std::function&lt;<span class="keywordtype">bool</span>(<span class="keywordtype">bool</span>)&gt; update);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classPSR.html#ab208a31083c7b2f2af3d87fe86ca46ff">get_bit</a>(<a class="code hl_enumeration" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56">psr_bit</a> bit) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPSR.html#af4852938862acac03abafeceb68ee0c9">set_bit</a>(<a class="code hl_enumeration" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56">psr_bit</a> bit, <span class="keywordtype">bool</span> value);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPSR.html#ab274086e31101129c819f829dcc0729a">update_bit</a>(<a class="code hl_enumeration" href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56">psr_bit</a> bit, std::function&lt;<span class="keywordtype">bool</span>(<span class="keywordtype">bool</span>)&gt; update);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  std::byte get() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keywordtype">void</span> set(std::byte value);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  std::byte <a class="code hl_function" href="classPSR.html#ac31ff918bfcc4de90260a3c87b70d115">get</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classPSR.html#ae680d04a483e1e79b0b037938ed61a77">set</a>(std::byte value);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>};</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassPSR_html"><div class="ttname"><a href="classPSR.html">PSR</a></div><div class="ttdef"><b>Definition:</b> psr.h:34</div></div>
 <div class="ttc" id="aclassPSR_html_ab208a31083c7b2f2af3d87fe86ca46ff"><div class="ttname"><a href="classPSR.html#ab208a31083c7b2f2af3d87fe86ca46ff">PSR::get_bit</a></div><div class="ttdeci">bool get_bit(psr_bit bit) const</div><div class="ttdef"><b>Definition:</b> psr.cpp:9</div></div>
 <div class="ttc" id="aclassPSR_html_ab274086e31101129c819f829dcc0729a"><div class="ttname"><a href="classPSR.html#ab274086e31101129c819f829dcc0729a">PSR::update_bit</a></div><div class="ttdeci">void update_bit(psr_bit bit, std::function&lt; bool(bool)&gt; update)</div><div class="ttdef"><b>Definition:</b> psr.cpp:41</div></div>
+<div class="ttc" id="aclassPSR_html_ac31ff918bfcc4de90260a3c87b70d115"><div class="ttname"><a href="classPSR.html#ac31ff918bfcc4de90260a3c87b70d115">PSR::get</a></div><div class="ttdeci">std::byte get() const</div><div class="ttdef"><b>Definition:</b> psr.cpp:50</div></div>
+<div class="ttc" id="aclassPSR_html_adf518adc7cf2f7cf6c6c5c86f50a1a08"><div class="ttname"><a href="classPSR.html#adf518adc7cf2f7cf6c6c5c86f50a1a08">PSR::psr_</a></div><div class="ttdeci">std::byte psr_</div><div class="ttdef"><b>Definition:</b> psr.h:36</div></div>
+<div class="ttc" id="aclassPSR_html_ae47a8083f8b3257e6b1edd2bdc9294fc"><div class="ttname"><a href="classPSR.html#ae47a8083f8b3257e6b1edd2bdc9294fc">PSR::PSR</a></div><div class="ttdeci">PSR()</div><div class="ttdef"><b>Definition:</b> psr.h:39</div></div>
+<div class="ttc" id="aclassPSR_html_ae680d04a483e1e79b0b037938ed61a77"><div class="ttname"><a href="classPSR.html#ae680d04a483e1e79b0b037938ed61a77">PSR::set</a></div><div class="ttdeci">void set(std::byte value)</div><div class="ttdef"><b>Definition:</b> psr.cpp:52</div></div>
 <div class="ttc" id="aclassPSR_html_af4852938862acac03abafeceb68ee0c9"><div class="ttname"><a href="classPSR.html#af4852938862acac03abafeceb68ee0c9">PSR::set_bit</a></div><div class="ttdeci">void set_bit(psr_bit bit, bool value)</div><div class="ttdef"><b>Definition:</b> psr.cpp:23</div></div>
+<div class="ttc" id="aclassPSR_html_afaa3bc84c7743c26c27968b8faa43fd0"><div class="ttname"><a href="classPSR.html#afaa3bc84c7743c26c27968b8faa43fd0">PSR::PSR</a></div><div class="ttdeci">PSR(std::byte psr)</div><div class="ttdef"><b>Definition:</b> psr.h:40</div></div>
+<div class="ttc" id="apsr_8h_html_a322eb4d68d9a221b35a25dc2a7f4ca56"><div class="ttname"><a href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56">psr_bit</a></div><div class="ttdeci">psr_bit</div><div class="ttdef"><b>Definition:</b> psr.h:20</div></div>
+<div class="ttc" id="apsr_8h_html_a322eb4d68d9a221b35a25dc2a7f4ca56a0bd9f6dd716003f3818d15d2e211ee73"><div class="ttname"><a href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56a0bd9f6dd716003f3818d15d2e211ee73">psr_bit::overflow</a></div><div class="ttdeci">@ overflow</div></div>
+<div class="ttc" id="apsr_8h_html_a322eb4d68d9a221b35a25dc2a7f4ca56a228d6a97a9838dc800e58b3c74ba7b11"><div class="ttname"><a href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56a228d6a97a9838dc800e58b3c74ba7b11">psr_bit::negative</a></div><div class="ttdeci">@ negative</div></div>
+<div class="ttc" id="apsr_8h_html_a322eb4d68d9a221b35a25dc2a7f4ca56a2e37d1762e6c6b33cf24299d02544316"><div class="ttname"><a href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56a2e37d1762e6c6b33cf24299d02544316">psr_bit::decimal_mode</a></div><div class="ttdeci">@ decimal_mode</div></div>
+<div class="ttc" id="apsr_8h_html_a322eb4d68d9a221b35a25dc2a7f4ca56a8286f646d8be0b6fe7c599b37b0a1b7c"><div class="ttname"><a href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56a8286f646d8be0b6fe7c599b37b0a1b7c">psr_bit::interrupt_disable</a></div><div class="ttdeci">@ interrupt_disable</div></div>
+<div class="ttc" id="apsr_8h_html_a322eb4d68d9a221b35a25dc2a7f4ca56ad02c4c4cde7ae76252540d116a40f23a"><div class="ttname"><a href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56ad02c4c4cde7ae76252540d116a40f23a">psr_bit::zero</a></div><div class="ttdeci">@ zero</div></div>
+<div class="ttc" id="apsr_8h_html_a322eb4d68d9a221b35a25dc2a7f4ca56af9c05403344bba5b3993d54797b56820"><div class="ttname"><a href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56af9c05403344bba5b3993d54797b56820">psr_bit::carry</a></div><div class="ttdeci">@ carry</div></div>
+<div class="ttc" id="apsr_8h_html_a322eb4d68d9a221b35a25dc2a7f4ca56afa3c1fcd8fd0a76c837901a8dead4b19"><div class="ttname"><a href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56afa3c1fcd8fd0a76c837901a8dead4b19">psr_bit::break_command</a></div><div class="ttdeci">@ break_command</div></div>
+<div class="ttc" id="apsr_8h_html_a322eb4d68d9a221b35a25dc2a7f4ca56afd94c6a26d6b6571e8d9398446227ae8"><div class="ttname"><a href="psr_8h.html#a322eb4d68d9a221b35a25dc2a7f4ca56afd94c6a26d6b6571e8d9398446227ae8">psr_bit::unused</a></div><div class="ttdeci">@ unused</div></div>
+<div class="ttc" id="apsr_8h_html_ae9c2fa19d37461fb50e7209bcea30b99"><div class="ttname"><a href="psr_8h.html#ae9c2fa19d37461fb50e7209bcea30b99">PSR_INITIAL_VALUE</a></div><div class="ttdeci">constexpr unsigned char PSR_INITIAL_VALUE</div><div class="ttdef"><b>Definition:</b> psr.h:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>psr.h</b></li>
+    <li class="navelem"><a class="el" href="psr_8h.html">psr.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

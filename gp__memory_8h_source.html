@@ -30,8 +30,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">6502SIM
+   <div id="projectname">6502SIM<span id="projectnumber">&#160;1.0.0</span>
    </div>
+   <div id="projectbrief">A minimal 6502 (W65C02S) processor simulator</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -98,24 +99,24 @@ $(document).ready(function(){initNavTree('gp__memory_8h_source.html',''); initRe
   <div class="headertitle"><div class="title">gp_memory.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef _H_GP_MEMORY</span></div>
+<a href="gp__memory_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef _H_GP_MEMORY</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define _H_GP_MEMORY</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;address.h&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="address_8h.html">address.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> DEFAULT_OUTPUT_ADDRESS = 0xFFFB;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="gp__memory_8h.html#a9979608b6b97da690e35ed96ad8fe6b5">   12</a></span><span class="keyword">constexpr</span> <span class="keywordtype">size_t</span> <a class="code hl_variable" href="gp__memory_8h.html#a9979608b6b97da690e35ed96ad8fe6b5">DEFAULT_OUTPUT_ADDRESS</a> = 0xFFFB;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classGP__Memory.html">   18</a></span><span class="keyword">class </span><a class="code hl_class" href="classGP__Memory.html">GP_Memory</a> {</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  std::vector&lt;std::byte&gt; memory_;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classGP__Memory.html#aafa703359f4e1046913993c70f8ef00e">   20</a></span>  std::vector&lt;std::byte&gt; <a class="code hl_variable" href="classGP__Memory.html#aafa703359f4e1046913993c70f8ef00e">memory_</a>;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <a class="code hl_class" href="classaddress.html">address</a> print_device_addr_;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classGP__Memory.html#a6740d7913a9184026e8d62b09a1797c0">   22</a></span>  <a class="code hl_class" href="classaddress.html">address</a> <a class="code hl_variable" href="classGP__Memory.html#a6740d7913a9184026e8d62b09a1797c0">print_device_addr_</a>;</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <a class="code hl_class" href="classGP__Memory.html">GP_Memory</a>() : memory_(), print_device_addr_(DEFAULT_OUTPUT_ADDRESS) {}</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classGP__Memory.html#a99467187cc41d4ecd3705aa3ff201091">   25</a></span>  <a class="code hl_function" href="classGP__Memory.html#a99467187cc41d4ecd3705aa3ff201091">GP_Memory</a>() : <a class="code hl_variable" href="classGP__Memory.html#aafa703359f4e1046913993c70f8ef00e">memory_</a>(), <a class="code hl_variable" href="classGP__Memory.html#a6740d7913a9184026e8d62b09a1797c0">print_device_addr_</a>(<a class="code hl_variable" href="gp__memory_8h.html#a9979608b6b97da690e35ed96ad8fe6b5">DEFAULT_OUTPUT_ADDRESS</a>) {}</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keywordtype">size_t</span> <a class="code hl_function" href="classGP__Memory.html#a03b719e4f636ba1520ca31df1af651ce">size</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
@@ -126,22 +127,29 @@ $(document).ready(function(){initNavTree('gp__memory_8h_source.html',''); initRe
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  <span class="keywordtype">void</span> <span class="keyword">import</span>(std::istream &amp;s);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>  <span class="keywordtype">void</span> <span class="keyword">import</span>(<span class="keyword">const</span> std::string &amp;filename);</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  <span class="keywordtype">void</span> set_print_device(<a class="code hl_class" href="classaddress.html">address</a> addr) { print_device_addr_ = addr; }</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <a class="code hl_class" href="classaddress.html">address</a> print_device_addr()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> print_device_addr_; }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classGP__Memory.html#a83c0a0e6429f44f52b5a00a58ada113b">   36</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classGP__Memory.html#a83c0a0e6429f44f52b5a00a58ada113b">set_print_device</a>(<a class="code hl_class" href="classaddress.html">address</a> addr) { <a class="code hl_variable" href="classGP__Memory.html#a6740d7913a9184026e8d62b09a1797c0">print_device_addr_</a> = addr; }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classGP__Memory.html#a7d42c028e042a5d9d022c731b59e023c">   37</a></span>  <a class="code hl_class" href="classaddress.html">address</a> <a class="code hl_function" href="classGP__Memory.html#a7d42c028e042a5d9d022c731b59e023c">print_device_addr</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classGP__Memory.html#a6740d7913a9184026e8d62b09a1797c0">print_device_addr_</a>; }</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>};</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aaddress_8h_html"><div class="ttname"><a href="address_8h.html">address.h</a></div></div>
 <div class="ttc" id="aclassGP__Memory_html"><div class="ttname"><a href="classGP__Memory.html">GP_Memory</a></div><div class="ttdef"><b>Definition:</b> gp_memory.h:18</div></div>
 <div class="ttc" id="aclassGP__Memory_html_a03b719e4f636ba1520ca31df1af651ce"><div class="ttname"><a href="classGP__Memory.html#a03b719e4f636ba1520ca31df1af651ce">GP_Memory::size</a></div><div class="ttdeci">size_t size() const</div><div class="ttdef"><b>Definition:</b> gp_memory.cpp:11</div></div>
 <div class="ttc" id="aclassGP__Memory_html_a0cfb3e72b2eaff8bcf34d31bbb52e07a"><div class="ttname"><a href="classGP__Memory.html#a0cfb3e72b2eaff8bcf34d31bbb52e07a">GP_Memory::write</a></div><div class="ttdeci">void write(address address, std::byte value)</div><div class="ttdef"><b>Definition:</b> gp_memory.cpp:39</div></div>
 <div class="ttc" id="aclassGP__Memory_html_a137b4c481288e6f2eb5de177f7a7fcb0"><div class="ttname"><a href="classGP__Memory.html#a137b4c481288e6f2eb5de177f7a7fcb0">GP_Memory::read</a></div><div class="ttdeci">std::byte read(address address) const</div><div class="ttdef"><b>Definition:</b> gp_memory.cpp:20</div></div>
+<div class="ttc" id="aclassGP__Memory_html_a6740d7913a9184026e8d62b09a1797c0"><div class="ttname"><a href="classGP__Memory.html#a6740d7913a9184026e8d62b09a1797c0">GP_Memory::print_device_addr_</a></div><div class="ttdeci">address print_device_addr_</div><div class="ttdef"><b>Definition:</b> gp_memory.h:22</div></div>
+<div class="ttc" id="aclassGP__Memory_html_a7d42c028e042a5d9d022c731b59e023c"><div class="ttname"><a href="classGP__Memory.html#a7d42c028e042a5d9d022c731b59e023c">GP_Memory::print_device_addr</a></div><div class="ttdeci">address print_device_addr() const</div><div class="ttdef"><b>Definition:</b> gp_memory.h:37</div></div>
+<div class="ttc" id="aclassGP__Memory_html_a83c0a0e6429f44f52b5a00a58ada113b"><div class="ttname"><a href="classGP__Memory.html#a83c0a0e6429f44f52b5a00a58ada113b">GP_Memory::set_print_device</a></div><div class="ttdeci">void set_print_device(address addr)</div><div class="ttdef"><b>Definition:</b> gp_memory.h:36</div></div>
+<div class="ttc" id="aclassGP__Memory_html_a99467187cc41d4ecd3705aa3ff201091"><div class="ttname"><a href="classGP__Memory.html#a99467187cc41d4ecd3705aa3ff201091">GP_Memory::GP_Memory</a></div><div class="ttdeci">GP_Memory()</div><div class="ttdef"><b>Definition:</b> gp_memory.h:25</div></div>
+<div class="ttc" id="aclassGP__Memory_html_aafa703359f4e1046913993c70f8ef00e"><div class="ttname"><a href="classGP__Memory.html#aafa703359f4e1046913993c70f8ef00e">GP_Memory::memory_</a></div><div class="ttdeci">std::vector&lt; std::byte &gt; memory_</div><div class="ttdef"><b>Definition:</b> gp_memory.h:20</div></div>
 <div class="ttc" id="aclassaddress_html"><div class="ttname"><a href="classaddress.html">address</a></div><div class="ttdef"><b>Definition:</b> address.h:8</div></div>
+<div class="ttc" id="agp__memory_8h_html_a9979608b6b97da690e35ed96ad8fe6b5"><div class="ttname"><a href="gp__memory_8h.html#a9979608b6b97da690e35ed96ad8fe6b5">DEFAULT_OUTPUT_ADDRESS</a></div><div class="ttdeci">constexpr size_t DEFAULT_OUTPUT_ADDRESS</div><div class="ttdef"><b>Definition:</b> gp_memory.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>gp_memory.h</b></li>
+    <li class="navelem"><a class="el" href="gp__memory_8h.html">gp_memory.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

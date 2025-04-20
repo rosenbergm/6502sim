@@ -30,8 +30,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">6502SIM
+   <div id="projectname">6502SIM<span id="projectnumber">&#160;1.0.0</span>
    </div>
+   <div id="projectbrief">A minimal 6502 (W65C02S) processor simulator</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -102,31 +103,104 @@ $(document).ready(function(){initNavTree('structInstruction.html',''); initResiz
   <div class="headertitle"><div class="title">Instruction Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="instruction__types_8h_source.html">instruction_types.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for Instruction:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structInstruction__coll__graph.svg" width="127" height="132"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae3e0a256c74d64980b7cb03143fb8eed"><td class="memItemLeft" align="right" valign="top"><a id="ae3e0a256c74d64980b7cb03143fb8eed" name="ae3e0a256c74d64980b7cb03143fb8eed"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Instruction</b> (std::string name_, AddressingMode mode_, std::function&lt; InstructionErr(<a class="el" href="classCPU6502.html">CPU6502</a> &amp;, <a class="el" href="classaddress.html">address</a>)&gt; execute_)</td></tr>
+<tr class="memitem:ae3e0a256c74d64980b7cb03143fb8eed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstruction.html#ae3e0a256c74d64980b7cb03143fb8eed">Instruction</a> (std::string name_, <a class="el" href="instruction__types_8h.html#aa5cfff0cd9c5ad5ebda7aeecc4a50c2b">AddressingMode</a> mode_, std::function&lt; <a class="el" href="instruction__types_8h.html#aec4297b51469842f48297684ed7f1539">InstructionErr</a>(<a class="el" href="classCPU6502.html">CPU6502</a> &amp;, <a class="el" href="classaddress.html">address</a>)&gt; execute_)</td></tr>
 <tr class="separator:ae3e0a256c74d64980b7cb03143fb8eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:abfd1615a8bb140e70b3724214deee7df"><td class="memItemLeft" align="right" valign="top"><a id="abfd1615a8bb140e70b3724214deee7df" name="abfd1615a8bb140e70b3724214deee7df"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
-<tr class="memdesc:abfd1615a8bb140e70b3724214deee7df"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the instruction specified in the ABI (or datasheet). <br /></td></tr>
+<tr class="memitem:abfd1615a8bb140e70b3724214deee7df"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstruction.html#abfd1615a8bb140e70b3724214deee7df">name</a></td></tr>
+<tr class="memdesc:abfd1615a8bb140e70b3724214deee7df"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the instruction specified in the ABI (or datasheet).  <br /></td></tr>
 <tr class="separator:abfd1615a8bb140e70b3724214deee7df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6ee63dab4a498543e74a1e418ec9f29"><td class="memItemLeft" align="right" valign="top"><a id="ad6ee63dab4a498543e74a1e418ec9f29" name="ad6ee63dab4a498543e74a1e418ec9f29"></a>
-AddressingMode&#160;</td><td class="memItemRight" valign="bottom"><b>mode</b></td></tr>
-<tr class="memdesc:ad6ee63dab4a498543e74a1e418ec9f29"><td class="mdescLeft">&#160;</td><td class="mdescRight">The addressing mode of the instruction. <br /></td></tr>
+<tr class="memitem:ad6ee63dab4a498543e74a1e418ec9f29"><td class="memItemLeft" align="right" valign="top"><a class="el" href="instruction__types_8h.html#aa5cfff0cd9c5ad5ebda7aeecc4a50c2b">AddressingMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstruction.html#ad6ee63dab4a498543e74a1e418ec9f29">mode</a></td></tr>
+<tr class="memdesc:ad6ee63dab4a498543e74a1e418ec9f29"><td class="mdescLeft">&#160;</td><td class="mdescRight">The addressing mode of the instruction.  <br /></td></tr>
 <tr class="separator:ad6ee63dab4a498543e74a1e418ec9f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbe0c739d348619c7a61d8509d17113b"><td class="memItemLeft" align="right" valign="top"><a id="acbe0c739d348619c7a61d8509d17113b" name="acbe0c739d348619c7a61d8509d17113b"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>bytes</b></td></tr>
-<tr class="memdesc:acbe0c739d348619c7a61d8509d17113b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of bytes the instruction takes up in memory. <br /></td></tr>
+<tr class="memitem:acbe0c739d348619c7a61d8509d17113b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstruction.html#acbe0c739d348619c7a61d8509d17113b">bytes</a></td></tr>
+<tr class="memdesc:acbe0c739d348619c7a61d8509d17113b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of bytes the instruction takes up in memory.  <br /></td></tr>
 <tr class="separator:acbe0c739d348619c7a61d8509d17113b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9117d60c1f039a86888ea4e00c4e97f1"><td class="memItemLeft" align="right" valign="top">std::function&lt; InstructionErr(<a class="el" href="classCPU6502.html">CPU6502</a> &amp;, <a class="el" href="classaddress.html">address</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstruction.html#a9117d60c1f039a86888ea4e00c4e97f1">execute</a></td></tr>
+<tr class="memitem:a9117d60c1f039a86888ea4e00c4e97f1"><td class="memItemLeft" align="right" valign="top">std::function&lt; <a class="el" href="instruction__types_8h.html#aec4297b51469842f48297684ed7f1539">InstructionErr</a>(<a class="el" href="classCPU6502.html">CPU6502</a> &amp;, <a class="el" href="classaddress.html">address</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structInstruction.html#a9117d60c1f039a86888ea4e00c4e97f1">execute</a></td></tr>
 <tr class="separator:a9117d60c1f039a86888ea4e00c4e97f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae3e0a256c74d64980b7cb03143fb8eed" name="ae3e0a256c74d64980b7cb03143fb8eed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3e0a256c74d64980b7cb03143fb8eed">&#9670;&#160;</a></span>Instruction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Instruction::Instruction </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="instruction__types_8h.html#aa5cfff0cd9c5ad5ebda7aeecc4a50c2b">AddressingMode</a>&#160;</td>
+          <td class="paramname"><em>mode_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; <a class="el" href="instruction__types_8h.html#aec4297b51469842f48297684ed7f1539">InstructionErr</a>(<a class="el" href="classCPU6502.html">CPU6502</a> &amp;, <a class="el" href="classaddress.html">address</a>)&gt;&#160;</td>
+          <td class="paramname"><em>execute_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structInstruction_ae3e0a256c74d64980b7cb03143fb8eed_cgraph.svg" width="432" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="acbe0c739d348619c7a61d8509d17113b" name="acbe0c739d348619c7a61d8509d17113b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbe0c739d348619c7a61d8509d17113b">&#9670;&#160;</a></span>bytes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Instruction::bytes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The number of bytes the instruction takes up in memory. </p>
+
+</div>
+</div>
 <a id="a9117d60c1f039a86888ea4e00c4e97f1" name="a9117d60c1f039a86888ea4e00c4e97f1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9117d60c1f039a86888ea4e00c4e97f1">&#9670;&#160;</a></span>execute</h2>
 
@@ -134,11 +208,43 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>bytes</b></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::function&lt;InstructionErr(<a class="el" href="classCPU6502.html">CPU6502</a> &amp;, <a class="el" href="classaddress.html">address</a>)&gt; Instruction::execute</td>
+          <td class="memname">std::function&lt;<a class="el" href="instruction__types_8h.html#aec4297b51469842f48297684ed7f1539">InstructionErr</a>(<a class="el" href="classCPU6502.html">CPU6502</a> &amp;, <a class="el" href="classaddress.html">address</a>)&gt; Instruction::execute</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>The function to execute the instruction. Accepts the CPU from which it gets context from. </p>
+
+</div>
+</div>
+<a id="ad6ee63dab4a498543e74a1e418ec9f29" name="ad6ee63dab4a498543e74a1e418ec9f29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6ee63dab4a498543e74a1e418ec9f29">&#9670;&#160;</a></span>mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="instruction__types_8h.html#aa5cfff0cd9c5ad5ebda7aeecc4a50c2b">AddressingMode</a> Instruction::mode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The addressing mode of the instruction. </p>
+
+</div>
+</div>
+<a id="abfd1615a8bb140e70b3724214deee7df" name="abfd1615a8bb140e70b3724214deee7df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfd1615a8bb140e70b3724214deee7df">&#9670;&#160;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Instruction::name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The name of the instruction specified in the ABI (or datasheet). </p>
 
 </div>
 </div>

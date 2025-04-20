@@ -30,8 +30,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">6502SIM
+   <div id="projectname">6502SIM<span id="projectnumber">&#160;1.0.0</span>
    </div>
+   <div id="projectbrief">A minimal 6502 (W65C02S) processor simulator</div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -98,49 +99,318 @@ $(document).ready(function(){initNavTree('classaddress.html',''); initResizable(
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classaddress-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">address Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="address_8h_source.html">address.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for address:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classaddress__coll__graph.svg" width="183" height="235"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae69d0998ebcc1955badfcc36c2955c53"><td class="memItemLeft" align="right" valign="top"><a id="ae69d0998ebcc1955badfcc36c2955c53" name="ae69d0998ebcc1955badfcc36c2955c53"></a>
-constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>address</b> (const <a class="el" href="classaddress.html">address</a> &amp;) noexcept=default</td></tr>
+<tr class="memitem:a39a81b44eef1f6c627b1ee4adb1e4d05"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaddress.html#a39a81b44eef1f6c627b1ee4adb1e4d05">address</a> () noexcept=default</td></tr>
+<tr class="separator:a39a81b44eef1f6c627b1ee4adb1e4d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae69d0998ebcc1955badfcc36c2955c53"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaddress.html#ae69d0998ebcc1955badfcc36c2955c53">address</a> (const <a class="el" href="classaddress.html">address</a> &amp;) noexcept=default</td></tr>
 <tr class="separator:ae69d0998ebcc1955badfcc36c2955c53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1de2e6b84477d8b8191d8c709cbf8d8"><td class="memItemLeft" align="right" valign="top"><a id="af1de2e6b84477d8b8191d8c709cbf8d8" name="af1de2e6b84477d8b8191d8c709cbf8d8"></a>
-constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>address</b> (std::byte low, std::byte high) noexcept</td></tr>
+<tr class="memitem:af1de2e6b84477d8b8191d8c709cbf8d8"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaddress.html#af1de2e6b84477d8b8191d8c709cbf8d8">address</a> (std::byte <a class="el" href="classaddress.html#a4d1d7431ef40deb92e882595ec23b48f">low</a>, std::byte <a class="el" href="classaddress.html#a04026d672a5504049c540d4cf768536b">high</a>) noexcept</td></tr>
 <tr class="separator:af1de2e6b84477d8b8191d8c709cbf8d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa10e49c89033c28f4f060b1a72761e71"><td class="memTemplParams" colspan="2"><a id="aa10e49c89033c28f4f060b1a72761e71" name="aa10e49c89033c28f4f060b1a72761e71"></a>
-template&lt;typename IntegerType &gt; <br />
+<tr class="memitem:aa10e49c89033c28f4f060b1a72761e71"><td class="memTemplParams" colspan="2">template&lt;typename IntegerType &gt; <br />
 requires std::integral&lt;IntegerType&gt;</td></tr>
-<tr class="memitem:aa10e49c89033c28f4f060b1a72761e71"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><b>address</b> (IntegerType value) noexcept</td></tr>
+<tr class="memitem:aa10e49c89033c28f4f060b1a72761e71"><td class="memTemplItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classaddress.html#aa10e49c89033c28f4f060b1a72761e71">address</a> (IntegerType value) noexcept</td></tr>
 <tr class="separator:aa10e49c89033c28f4f060b1a72761e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17eef05bea924818360d097a7ee3ebbe"><td class="memItemLeft" align="right" valign="top"><a id="a17eef05bea924818360d097a7ee3ebbe" name="a17eef05bea924818360d097a7ee3ebbe"></a>
-constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>address</b> (std::byte value) noexcept</td></tr>
+<tr class="memitem:a17eef05bea924818360d097a7ee3ebbe"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaddress.html#a17eef05bea924818360d097a7ee3ebbe">address</a> (std::byte value) noexcept</td></tr>
 <tr class="separator:a17eef05bea924818360d097a7ee3ebbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa192ebe203ee5dee5fa79145cecf44fb"><td class="memItemLeft" align="right" valign="top"><a id="aa192ebe203ee5dee5fa79145cecf44fb" name="aa192ebe203ee5dee5fa79145cecf44fb"></a>
-constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>operator std::size_t</b> () const noexcept</td></tr>
+<tr class="memitem:aa192ebe203ee5dee5fa79145cecf44fb"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaddress.html#aa192ebe203ee5dee5fa79145cecf44fb">operator std::size_t</a> () const noexcept</td></tr>
 <tr class="separator:aa192ebe203ee5dee5fa79145cecf44fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a074fbc17d893c3b212a86f08d278b9ba"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaddress.html#a074fbc17d893c3b212a86f08d278b9ba">operator std::byte</a> () const noexcept</td></tr>
 <tr class="separator:a074fbc17d893c3b212a86f08d278b9ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add0092eb4577fdc3ec396a0fdf276b30"><td class="memItemLeft" align="right" valign="top"><a id="add0092eb4577fdc3ec396a0fdf276b30" name="add0092eb4577fdc3ec396a0fdf276b30"></a>
-constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>inner</b> () const noexcept</td></tr>
+<tr class="memitem:add0092eb4577fdc3ec396a0fdf276b30"><td class="memItemLeft" align="right" valign="top">constexpr uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaddress.html#add0092eb4577fdc3ec396a0fdf276b30">inner</a> () const noexcept</td></tr>
 <tr class="separator:add0092eb4577fdc3ec396a0fdf276b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d1d7431ef40deb92e882595ec23b48f"><td class="memItemLeft" align="right" valign="top"><a id="a4d1d7431ef40deb92e882595ec23b48f" name="a4d1d7431ef40deb92e882595ec23b48f"></a>
-constexpr std::byte&#160;</td><td class="memItemRight" valign="bottom"><b>low</b> () const noexcept</td></tr>
+<tr class="memitem:a4d1d7431ef40deb92e882595ec23b48f"><td class="memItemLeft" align="right" valign="top">constexpr std::byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaddress.html#a4d1d7431ef40deb92e882595ec23b48f">low</a> () const noexcept</td></tr>
 <tr class="separator:a4d1d7431ef40deb92e882595ec23b48f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04026d672a5504049c540d4cf768536b"><td class="memItemLeft" align="right" valign="top"><a id="a04026d672a5504049c540d4cf768536b" name="a04026d672a5504049c540d4cf768536b"></a>
-constexpr std::byte&#160;</td><td class="memItemRight" valign="bottom"><b>high</b> () const noexcept</td></tr>
+<tr class="memitem:a04026d672a5504049c540d4cf768536b"><td class="memItemLeft" align="right" valign="top">constexpr std::byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaddress.html#a04026d672a5504049c540d4cf768536b">high</a> () const noexcept</td></tr>
 <tr class="separator:a04026d672a5504049c540d4cf768536b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ab0a6459dc15ef5e71bc4ab5d8885ae93"><td class="memItemLeft" align="right" valign="top"><a id="ab0a6459dc15ef5e71bc4ab5d8885ae93" name="ab0a6459dc15ef5e71bc4ab5d8885ae93"></a>
-static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_carry</b> (const uint32_t a) noexcept</td></tr>
+<tr class="memitem:ab0a6459dc15ef5e71bc4ab5d8885ae93"><td class="memItemLeft" align="right" valign="top">static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaddress.html#ab0a6459dc15ef5e71bc4ab5d8885ae93">is_carry</a> (const uint32_t a) noexcept</td></tr>
 <tr class="separator:ab0a6459dc15ef5e71bc4ab5d8885ae93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ae16c7309ba6562abd01cfe339fec475b"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaddress.html#ae16c7309ba6562abd01cfe339fec475b">value_</a></td></tr>
+<tr class="separator:ae16c7309ba6562abd01cfe339fec475b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a39a81b44eef1f6c627b1ee4adb1e4d05" name="a39a81b44eef1f6c627b1ee4adb1e4d05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39a81b44eef1f6c627b1ee4adb1e4d05">&#9670;&#160;</a></span>address() <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr address::address </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae69d0998ebcc1955badfcc36c2955c53" name="ae69d0998ebcc1955badfcc36c2955c53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae69d0998ebcc1955badfcc36c2955c53">&#9670;&#160;</a></span>address() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr address::address </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classaddress.html">address</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af1de2e6b84477d8b8191d8c709cbf8d8" name="af1de2e6b84477d8b8191d8c709cbf8d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1de2e6b84477d8b8191d8c709cbf8d8">&#9670;&#160;</a></span>address() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr address::address </td>
+          <td>(</td>
+          <td class="paramtype">std::byte&#160;</td>
+          <td class="paramname"><em>low</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::byte&#160;</td>
+          <td class="paramname"><em>high</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa10e49c89033c28f4f060b1a72761e71" name="aa10e49c89033c28f4f060b1a72761e71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa10e49c89033c28f4f060b1a72761e71">&#9670;&#160;</a></span>address() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename IntegerType &gt; <br />
+requires std::integral&lt;IntegerType&gt;</div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr address::address </td>
+          <td>(</td>
+          <td class="paramtype">IntegerType&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a17eef05bea924818360d097a7ee3ebbe" name="a17eef05bea924818360d097a7ee3ebbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17eef05bea924818360d097a7ee3ebbe">&#9670;&#160;</a></span>address() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr address::address </td>
+          <td>(</td>
+          <td class="paramtype">std::byte&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a04026d672a5504049c540d4cf768536b" name="a04026d672a5504049c540d4cf768536b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04026d672a5504049c540d4cf768536b">&#9670;&#160;</a></span>high()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::byte address::high </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add0092eb4577fdc3ec396a0fdf276b30" name="add0092eb4577fdc3ec396a0fdf276b30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add0092eb4577fdc3ec396a0fdf276b30">&#9670;&#160;</a></span>inner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr uint16_t address::inner </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classaddress_add0092eb4577fdc3ec396a0fdf276b30_icgraph.svg" width="100%" height="402"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ab0a6459dc15ef5e71bc4ab5d8885ae93" name="ab0a6459dc15ef5e71bc4ab5d8885ae93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0a6459dc15ef5e71bc4ab5d8885ae93">&#9670;&#160;</a></span>is_carry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr bool address::is_carry </td>
+          <td>(</td>
+          <td class="paramtype">const uint32_t&#160;</td>
+          <td class="paramname"><em>a</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classaddress_ab0a6459dc15ef5e71bc4ab5d8885ae93_icgraph.svg" width="279" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a4d1d7431ef40deb92e882595ec23b48f" name="a4d1d7431ef40deb92e882595ec23b48f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d1d7431ef40deb92e882595ec23b48f">&#9670;&#160;</a></span>low()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::byte address::low </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a074fbc17d893c3b212a86f08d278b9ba" name="a074fbc17d893c3b212a86f08d278b9ba"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a074fbc17d893c3b212a86f08d278b9ba">&#9670;&#160;</a></span>operator std::byte()</h2>
 
@@ -164,6 +434,54 @@ static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_c
 </table>
 </div><div class="memdoc">
 <p>Implicit conversion to std::byte. This is UNSAFE, because it discards the high byte of the address. </p>
+
+</div>
+</div>
+<a id="aa192ebe203ee5dee5fa79145cecf44fb" name="aa192ebe203ee5dee5fa79145cecf44fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa192ebe203ee5dee5fa79145cecf44fb">&#9670;&#160;</a></span>operator std::size_t()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr address::operator std::size_t </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae16c7309ba6562abd01cfe339fec475b" name="ae16c7309ba6562abd01cfe339fec475b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae16c7309ba6562abd01cfe339fec475b">&#9670;&#160;</a></span>value_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t address::value_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
