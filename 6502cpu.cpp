@@ -62,7 +62,7 @@ void CPU6502::execute() {
 }
 
 /**
- * Makes one step of the CPU, equivallent to executing one instruction and
+ * Makes one step of the CPU, equivallent to executing one @ref Instruction and
  * advances the program counter.
  *
  * @return InstructionErr The result of the executed instruction.

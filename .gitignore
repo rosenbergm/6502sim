@@ -36,3 +36,8 @@
 *.exe
 *.out
 *.app
+
+# Docs
+
+docs/*
+!docs/.gitkeep

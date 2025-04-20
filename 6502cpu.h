@@ -49,8 +49,8 @@ private:
 
 public:
   /**
-   * Create a new CPU instance with the provided memory.
-   *
+   * Create a new @ref CPU6502 instance with the provided @ref GP_Memory.
+
    * @param memory The memory to use with the CPU.
    * @param debug Whether to enable debug mode.
    * @throws CPUException If the memory is null.

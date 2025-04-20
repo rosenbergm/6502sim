@@ -1,4 +1,4 @@
-TARGET=main.out
+TARGET=6502sim.out
 CC=g++
 CFLAGS=-std=c++20 -pedantic -Wall -Wextra -Wcast-align -Wcast-qual -Wctor-dtor-privacy \
 	-Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations \
